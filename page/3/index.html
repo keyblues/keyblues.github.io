@@ -1,0 +1,346 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>keyblue的WriteUp - blog</title><meta name="author" content="keyblues"><meta name="copyright" content="keyblues"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="记录WriteUp">
+<meta property="og:type" content="website">
+<meta property="og:title" content="keyblue的WriteUp">
+<meta property="og:url" content="https://keyblues.github.io/page/3/index.html">
+<meta property="og:site_name" content="keyblue的WriteUp">
+<meta property="og:description" content="记录WriteUp">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:author" content="keyblues">
+<meta property="article:tag" content="blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://keyblues.github.io/page/3/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'keyblue的WriteUp',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-09-01 16:36:43'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">30</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr class="custom-hr"/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="keyblue的WriteUp"><span class="site-name">keyblue的WriteUp</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">keyblue的WriteUp</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/09/01/%5B%E8%93%9D%E5%B8%BD%E6%9D%AF2022%E5%88%9D%E8%B5%9B%5D%E7%BD%91%E7%AB%99%E5%8F%96%E8%AF%81/" title="[蓝帽杯2022初赛]网站取证">[蓝帽杯2022初赛]网站取证</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-01T07:36:14.000Z" title="发表于 2023-09-01 15:36:14">2023-09-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Misc/">Misc</a></span></div><div class="content">1据了解，某网上商城系一团伙日常资金往来用，从2022年4月1日起使用虚拟币GG币进行交易，现已获得该网站的源代码以及部分数据库备份文件，请您对以下问题进行分析解答。
+
+
+
+问11请从网站源码中找出木马文件，并提交木马连接的密码。
+
+打开压缩包，是网站的根目录备份压缩包和sql备份文件。
+我们直接解压压缩包，被火绒查杀出一个webshell
+
+那么题目需要的木马文件应该就是它了
+我们打开该文件
+
+连接密码是
+1lanmaobei666
+
+
+
+问21请提交数据库连接的明文密码
+
+通过Seqy源码审计系统全局搜索password
+
+点开第一个database.0.php,发现数据库用户名明文显示在此文件内，同时看到密码是由my_encrypt()函数决定的
+
+追踪到my_encrypt()函数所在的文件
+
+我们搭建一个php环境运行一下这个文件，同时输出密码
+
+
+需要注意的是php环境版本不能高于7.1。因为代码中使用的mcrypt_module_open()函数在7.2版本被弃用了
+明文密码为
+1KBLT123
+
+
+
+问31请提交数据库金额加密混淆使用的盐值。
+
+
+
+全局搜索key
+
+第 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/09/01/%5BSWPUCTF2021%E6%96%B0%E7%94%9F%E8%B5%9B%5D%E6%88%91flag%E5%91%A2%EF%BC%9F/" title="[SWPUCTF2021新生赛]我flag呢？">[SWPUCTF2021新生赛]我flag呢？</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-01T07:36:14.000Z" title="发表于 2023-09-01 15:36:14">2023-09-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Misc/">Misc</a></span></div><div class="content">打开文件
+
+词频统计
+1234567891011121314151617from collections import Counterimport reflag = &#x27;&#x27;with open(&#x27;res/附件.txt&#x27;, &#x27;r&#x27;) as f:    for line in f:        text = linetext = re.findall(&quot;&#123;(.*?)&#125;&quot;, text)for i in text:    flag += iwordcount = Counter(flag.lower())wordcount = wordcountprint(wordcount)for i in wordcount:    print(i[0], end=&#x27;&#x27;)
+
+需要注意的是，题目给的文本是两行，我们把两行合并成一行保存后再运行脚本
+运行脚本
+
+1yourflagis81e57d2bc90364t
+
+因为t只出现了一次
+所以最后的flag为
+1NSSCTF&#123;81e57 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/09/01/%5B%E8%93%9D%E5%B8%BD%E6%9D%AF2022%E5%88%9D%E8%B5%9B%5D%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8F%96%E8%AF%81/" title="[蓝帽杯2022初赛]计算机取证">[蓝帽杯2022初赛]计算机取证</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-01T07:36:14.000Z" title="发表于 2023-09-01 15:36:14">2023-09-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Misc/">Misc</a></span></div><div class="content">1现对一个windows计算机进行取证，请您对以下问题进行分析解答。
+
+
+
+问11从内存镜像中获得taqi7的开机密码是多少？
+
+
+密文：7f21caca5685f10d9e849cc84c340528
+1anxinqi
+
+
+
+问21制作该内存镜像的进程Pid号是多少？</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/09/01/%5B%E9%99%87%E5%89%91%E6%9D%AF2021%5D%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90/" title="[陇剑杯2021]内存分析">[陇剑杯2021]内存分析</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-01T07:36:14.000Z" title="发表于 2023-09-01 15:36:14">2023-09-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Misc/">Misc</a></span></div><div class="content">问1解开压缩包得到两个文件
+
+先看txt文本
+
+使用volatility对文件进行分析
+首先查看镜像信息
+
+题目是需要知道虚拟机的密码，可以使用mimikatz查看或者lsadump
+
+flag值：flag{W31C0M3 T0 THiS 34SY F0R3NSiCX}
+问2先找找关键字ctf或者flag什么的，发现有HUAWEI
+
+根据题意，flag在某品牌手机的备份文件里面，随机筛选HUAWEI关键词
+
+将文件都下载下来
+
+下载华为备份解密工具，
+工具地址：https://github.com/RealityNet/kobackupdec
+使用命令解密 解密需要密码，密码根据提示是上一问的flag值
+1python .\kobackupdec.py -vvv W31C0M3_T0_THiS_34SY_F0R3NSiCX &#x27;C:\Users\dell\Downloads\Compressed\kobackupdec-master\HUAWEI P40_2021-aa-bb xx.yy.zz&#x27; C:\Users\dell\Downloads\Compressed\k ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/09/01/%5B%E9%B9%A4%E5%9F%8E%E6%9D%AF2021%5DNewMISC/" title="[鹤城杯2021]NewMISC">[鹤城杯2021]NewMISC</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-01T07:36:14.000Z" title="发表于 2023-09-01 15:36:14">2023-09-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Misc/">Misc</a></span></div><div class="content">题目给的是一个pdf文件
+
+010打开看不出来什么东西
+应该是一个隐写
+wbstego4open下载 ：http://wbstego.wbailer.com/
+用wbstego4open来查看隐写内容
+打开软件选择Decode
+
+选择PDF把需要查看的文件选上
+
+这里空着
+
+选择保存到哪里，这里选择保存到1.txt
+
+完成
+
+打开1.txt
+
+flag值：flag{verY_g00d_YoU_f0und_th1s}
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/09/01/%5B%E9%99%87%E5%89%91%E6%9D%AF2021%5DSQL%E6%B3%A8%E5%85%A5/" title="[陇剑杯2021]SQL注入">[陇剑杯2021]SQL注入</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-01T07:36:14.000Z" title="发表于 2023-09-01 15:36:14">2023-09-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Misc/">Misc</a></span></div><div class="content">问1明显的布尔盲注
+问2拉到日志最后
+
+看到字段为flag，数据库为sqli，表为flag
+问3观察发现匹配到正确的字符时，响应的页面字符大小为479|480|481|482根据这个特征有此脚本
+12345678910import reflag = &#x27;&#x27;with open(&#x27;res/access.log&#x27;, &#x27;r&#x27;) as f:    for line in f:        if re.search(&#x27;(select%20flag%20from%20sqli.flag)&#x27;, line):            if re.search(&#x27;479|480|481|482&#x27;, line):                line = re.findall(&quot;%20=%20&#x27;(.+)&#x27;,1,&quot;, line)[0]                flag += line                print(flag)
+
+最后得到flag值flag ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/09/01/%5B%E9%99%87%E5%89%91%E6%9D%AF2021%5Dios/" title="[陇剑杯2021]ios">[陇剑杯2021]ios</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-01T07:36:14.000Z" title="发表于 2023-09-01 15:36:14">2023-09-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Misc/">Misc</a></span></div><div class="content">1一位ios的安全研究员在家中使用手机联网被黑，不仅被窃密还丢失比特币若干，请你通过流量和日志分析后作答
+
+
+
+问11黑客所控制的C&amp;C服务器IP是
+
+打开压缩包是三个文件
+
+打开wireshark，在第 15 TCP流有重要明文信息
+
+可以看到IP暴露
+13.128.156.159
+
+
+
+问21黑客利用的Github开源项目的名字是
+
+如图，github链接
+
+1stowaway
+
+
+
+问31通讯加密密钥的明文是
+
+如图
+
+1hack4sec
+
+
+
+问41黑客通过SQL盲注拿到了一个敏感数据，内容是
+
+这一问考察的是tls流量的解密，需要用到题目提供的keylog.txt
+首先打开首选项
+
+点开Protocols，找到TLS
+
+选择keylog.txt然后确定即可
+
+筛选HTTP2
+
+查找select字符串
+
+对其中一条进行URL解码
+1GET /info?l=1&amp;o=(case_when_(select_hex(substr(password,1,1))_from_user)=&quot;2D&quot;_then_id_else_col1_end)
+
+选中开始盲注 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/09/01/%5B%E9%B9%A4%E5%9F%8E%E6%9D%AF2021%5D%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/" title="[鹤城杯2021]流量分析">[鹤城杯2021]流量分析</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-01T07:36:14.000Z" title="发表于 2023-09-01 15:36:14">2023-09-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Misc/">Misc</a></span></div><div class="content">题目打开，是个pacpng包
+
+明显的sql注入流量
+筛选流量
+
+选择导出为纯文本
+
+取消勾选Packet details后导出
+
+导出后的文件
+
+脚本
+123456789101112131415import reflag = &#x27;&#x27;var_back = 0with open(&#x27;res/timu.txt&#x27;, &#x27;r&#x27;) as f:    for line in f:        if re.search(&#x27;(text/html)&#x27;, line):            continue        if re.search(f&quot;[%20and%20ascii(substr((select%20flag%20from%20t),]&quot;, line):            var = int(re.findall(f&quot;[,1))]=(.*?)--+&quot;, line)[0])            if var &lt;= var_back:                f ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/09/01/%5B%E9%99%87%E5%89%91%E6%9D%AF2021%5D%E7%AE%80%E5%8D%95%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/" title="[陇剑杯2021]简单日志分析">[陇剑杯2021]简单日志分析</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-01T07:36:14.000Z" title="发表于 2023-09-01 15:36:14">2023-09-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Misc/">Misc</a></span></div><div class="content">问1简单分析可知参数为user
+问21234567891011121314151617181920127.0.0.1 - - [07/Aug/2021 10:43:12] &quot;GET /?user=STAKcDAKMFMnY2F0IC9UaDRzX0lTX1ZFUllfSW1wb3J0X0ZpMWUnCnAxCjAoZzAKbHAyCjAoSTAKdHAzCjAoZzMKSTAKZHA0CjBjb3MKc3lzdGVtCnA1CjBnNQooZzEKdFIu HTTP/1.1&quot; 500 -解密得到I0p00S&#x27;cat /Th4s_IS_VERY_Import_Fi1e&#x27;p10(g0lp20(I0tp30(g3I0dp40cossystemp50g5(g1tR.
+
+所以黑客查看秘密文件的绝对路径为/Th4s_IS_VERY_Import_Fi1e
+问3123456789101112131415161718192021127.0.0.1 - - [07/Aug/2021 10:43:12] &quot;GET /?user=STAKcDAKMFMnYm ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/09/01/%5B%E9%99%87%E5%89%91%E6%9D%AF2021%5D%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/" title="[陇剑杯2021]日志分析">[陇剑杯2021]日志分析</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-01T07:36:14.000Z" title="发表于 2023-09-01 15:36:14">2023-09-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Misc/">Misc</a></span></div><div class="content">问1根据日志文件发现响应码200极少，随机筛选含200的行。
+发现了泄露的www.zip文件
+
+问2查看日志，在最后发现了&#x2F;?filename&#x3D;的语句，
+1234..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2Ftmp%2Fsess_car&amp;content=func%7CN%3Bfiles%7Ca%3A2%3A%7Bs%3A8%3A%22filename%22%3Bs%3A16%3A%22.%2Ffiles%2Ffilename%22%3Bs%3A20%3A%22call_user_func_array%22%3Bs%3A28%3A%22.%2Ffiles%2Fcall_user_func_array%22%3B%7Dpaths%7Ca%3A1%3A%7Bs%3A5%3A%22%2Fflag%22%3Bs%3A13%3A%22SplFileObject%22%3B%7D解码得到../../../../../../../../../../.. ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/2/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#content-inner">2</a><span class="page-number current">3</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">keyblues</div><div class="author-info__description">记录WriteUp</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">30</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/keyblues"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/01/%5BHDCTF2023%5DhardMisc/" title="[HDCTF2023]hardMisc">[HDCTF2023]hardMisc</a><time datetime="2023-09-01T07:36:14.000Z" title="发表于 2023-09-01 15:36:14">2023-09-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/01/%5BHUBUCTF2022%E6%96%B0%E7%94%9F%E8%B5%9B%5D%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84misc/" title="[HUBUCTF2022新生赛]最简单的misc">[HUBUCTF2022新生赛]最简单的misc</a><time datetime="2023-09-01T07:36:14.000Z" title="发表于 2023-09-01 15:36:14">2023-09-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/01/%5BLitCTF2023%5D%E8%BF%99%E7%BE%BD%E6%AF%9B%E7%90%83%E6%80%8E%E4%B9%88%E5%8F%AA%E6%9C%89%E4%B8%80%E5%8D%8A%E5%95%8A%EF%BC%88%E6%81%BC(%E5%88%9D%E7%BA%A7)/" title="[LitCTF2023]这羽毛球怎么只有一半啊（恼(初级)">[LitCTF2023]这羽毛球怎么只有一半啊（恼(初级)</a><time datetime="2023-09-01T07:36:14.000Z" title="发表于 2023-09-01 15:36:14">2023-09-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/01/%5BLitCTF2023%5DOsint%E5%B0%8F%E9%BA%A6%E6%9E%9C%E6%B1%81/" title="[LitCTF2023]Osint小麦果汁">[LitCTF2023]Osint小麦果汁</a><time datetime="2023-09-01T07:36:14.000Z" title="发表于 2023-09-01 15:36:14">2023-09-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/01/%5BLitCTF2023%5DTakemehand(%E5%88%9D%E7%BA%A7)/" title="[LitCTF2023]Takemehand(初级)">[LitCTF2023]Takemehand(初级)</a><time datetime="2023-09-01T07:36:14.000Z" title="发表于 2023-09-01 15:36:14">2023-09-01</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Misc/"><span class="card-category-list-name">Misc</span><span class="card-category-list-count">30</span></a></li>
+            </ul></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/09/"><span class="card-archive-list-date">九月 2023</span><span class="card-archive-list-count">30</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">30</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-09-01T08:36:43.141Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By keyblues</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
