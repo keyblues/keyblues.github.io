@@ -674,6 +674,118 @@
     </entry>
     
     
+    
+    <entry>
+      <title>记一次信创系统下Typora+PicGo+华为云OBS，云图床配置</title>
+      <link href="/2023/05/27/%E8%AE%B0%E4%B8%80%E6%AC%A1%E4%BF%A1%E5%88%9B%E7%B3%BB%E7%BB%9F%E4%B8%8BTypora+picgo+%E5%8D%8E%E4%B8%BA%E4%BA%91OBS%EF%BC%8C%E4%BA%91%E5%9B%BE%E5%BA%8A%E9%85%8D%E7%BD%AE/"/>
+      <url>/2023/05/27/%E8%AE%B0%E4%B8%80%E6%AC%A1%E4%BF%A1%E5%88%9B%E7%B3%BB%E7%BB%9F%E4%B8%8BTypora+picgo+%E5%8D%8E%E4%B8%BA%E4%BA%91OBS%EF%BC%8C%E4%BA%91%E5%9B%BE%E5%BA%8A%E9%85%8D%E7%BD%AE/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Typora + PicGO + 华为云OBS 。Typora Linux版配置PicGo 华为云OBS对象存储，使用Typora写笔记图片自动上传到华为云储存桶。</p><h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p>Linux</p><p>国产ARM架构CPU 飞腾2000</p><p>银河麒麟V10 SP1。</p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>首先安装Typora</p><p>在Typora官网下载LinuxARM版安装包<a href="https://typora.io/#linux">https://typora.io/#linux</a></p><p>解压缩安装包到&#x2F;opt目录下</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf Typora-linux-arm64.tar.gz /opt</span><br></pre></td></tr></table></figure><p>安装node.js和npm</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install nodejs</span><br><span class="line">sudo apt install npm</span><br></pre></td></tr></table></figure><p>安装PicGo,仓库地址：<a href="https://github.com/PicGo/PicGo-Core">https://github.com/PicGo/PicGo-Core</a></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install picgo -g</span><br></pre></td></tr></table></figure><p>配置PicGo-Core使用华为云OBS</p><p>华为云OBS的PicGo插件仓库地址：<a href="https://github.com/YunfengGao/picgo-plugin-huawei-uploader">https://github.com/YunfengGao/picgo-plugin-huawei-uploader</a></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 进入该picgo安装文件夹(路径可能不一样，以自己的为准)</span><br><span class="line">cd /usr/local/lib/node_modules/picgo/bin/</span><br><span class="line"></span><br><span class="line"># 安装插件</span><br><span class="line">./picgo install picgo-plugin-huawei-uploader</span><br><span class="line"></span><br><span class="line"># 配置插件参数</span><br><span class="line">./picgo set uploader</span><br></pre></td></tr></table></figure><p>如下图配置信息，有4个必填项，</p><ul><li><p>第一个必填项为AccessKeyId</p></li><li><p>第二个必填项为SecretAccessKey</p></li><li><p>第三个必填项为桶名称</p></li><li><p>第四个必填项为Endpoint</p></li></ul><p><img src="https://imag.keyblue.cn/imag/202309031208306.png" alt="2023-06-08_14-10-42"></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 选择huawei-uploader插件并应用</span><br><span class="line">./picgo use uploader</span><br></pre></td></tr></table></figure><p>最后打开Typora偏好设置-&gt;图像，如下图配置即可</p><p><img src="https://imag.keyblue.cn/imag/202309031208291.png" alt="image-20230608141744671"></p><p>配置命令如下，具体路径根据具体情况更改</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;/usr/local/lib/node_modules/picgo/bin/picgo&quot; u</span><br></pre></td></tr></table></figure><p>最后点击验证图片上传验证是否配置成功</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 笔记 </category>
+          
+          <category> 其他 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Typora </tag>
+            
+            <tag> PicGo </tag>
+            
+            <tag> 华为云OBS </tag>
+            
+            <tag> 信创 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>VMware Workstation Pro 虚拟机软件专业版</title>
+      <link href="/2023/03/21/VMware%20Workstation%20Pro%20%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6%E4%B8%93%E4%B8%9A%E7%89%88/"/>
+      <url>/2023/03/21/VMware%20Workstation%20Pro%20%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6%E4%B8%93%E4%B8%9A%E7%89%88/</url>
+      
+        <content type="html"><![CDATA[<p>VMWare Workstation 是消费级虚拟机软件中的当之无愧的老大，无论从性能上还是周边的各种功能上都比其他产品要强大得多，如果你追求更全面的功能，更多的技术特性，那么你一定要试试 Workstation。<br><strong>下载地址</strong><br>VMware Workstation 17.0.1 Pro for Windows<br><a href="https://download3.vmware.com/software/WKST-1701-WIN/VMware-workstation-full-17.0.1-21139696.exe">https://download3.vmware.com/software/WKST-1701-WIN/VMware-workstation-full-17.0.1-21139696.exe</a></p><p>VMware Workstation 17.0.0 Pro for Windows<br><a href="https://download3.vmware.com/software/WKST-1700-WIN/VMware-workstation-full-17.0.0-20800274.exe">https://download3.vmware.com/software/WKST-1700-WIN/VMware-workstation-full-17.0.0-20800274.exe</a></p><p>VMware Workstation Pro 16.2.4 Build 20089737<br><a href="https://download3.vmware.com/software/WKST-1624-WIN/VMware-workstation-full-16.2.4-20089737.exe">https://download3.vmware.com/software/WKST-1624-WIN/VMware-workstation-full-16.2.4-20089737.exe</a></p><p>VMware Workstation Pro 16.2.3 Build 19376536<br><a href="https://download3.vmware.com/software/WKST-1623-WIN-New/VMware-workstation-full-16.2.3-19376536.exe">https://download3.vmware.com/software/WKST-1623-WIN-New/VMware-workstation-full-16.2.3-19376536.exe</a></p><p>VMware Workstation Pro 16.2.2 Build 19200509<br><a href="https://download3.vmware.com/software/wkst/file/VMware-workstation-full-16.2.2-19200509.exe">https://download3.vmware.com/software/wkst/file/VMware-workstation-full-16.2.2-19200509.exe</a></p><p>VMware Workstation Pro 16.2.0 Build 18760230<br><a href="https://download3.vmware.com/software/wkst/file/VMware-workstation-full-16.2.0-18760230.exe">https://download3.vmware.com/software/wkst/file/VMware-workstation-full-16.2.0-18760230.exe</a></p><p>VMware Workstation Pro 16.1.2 Build 17966106<br><a href="https://download3.vmware.com/software/wkst/file/VMware-workstation-full-16.1.2-17966106.exe">https://download3.vmware.com/software/wkst/file/VMware-workstation-full-16.1.2-17966106.exe</a></p><p>VMware Workstation Pro 16.1.1 Build 17801498<br><a href="https://download3.vmware.com/software/wkst/file/VMware-workstation-full-16.1.1-17801498.exe">https://download3.vmware.com/software/wkst/file/VMware-workstation-full-16.1.1-17801498.exe</a></p><p>VMware Workstation Pro 16.1.0 Build 17198959<br><a href="https://download3.vmware.com/software/wkst/file/VMware-workstation-full-16.1.0-17198959.exe">https://download3.vmware.com/software/wkst/file/VMware-workstation-full-16.1.0-17198959.exe</a></p><p>VMware Workstation Pro 16.0.0 Build 16894299<br><a href="https://download3.vmware.com/software/wkst/file/VMware-workstation-full-16.0.0-16894299.exe">https://download3.vmware.com/software/wkst/file/VMware-workstation-full-16.0.0-16894299.exe</a></p><p>VMware Workstation Pro 15.5.6 Build 16341506<br><a href="https://download3.vmware.com/software/wkst/file/VMware-workstation-full-15.5.6-16341506.exe">https://download3.vmware.com/software/wkst/file/VMware-workstation-full-15.5.6-16341506.exe</a></p><p>VMware Workstation Pro 15.5.5 Build 16285975<br><a href="https://download3.vmware.com/software/wkst/file/VMware-workstation-full-15.5.5-16285975.exe">https://download3.vmware.com/software/wkst/file/VMware-workstation-full-15.5.5-16285975.exe</a></p><p>VMware Workstation Pro 15.5.2 Build 15785246<br><a href="https://download3.vmware.com/software/wkst/file/VMware-workstation-full-15.5.2-15785246.exe">https://download3.vmware.com/software/wkst/file/VMware-workstation-full-15.5.2-15785246.exe</a></p><p>VMware Workstation Pro 15.5.1 Build 15018445<br><a href="https://download3.vmware.com/software/wkst/file/VMware-workstation-full-15.5.1-15018445.exe">https://download3.vmware.com/software/wkst/file/VMware-workstation-full-15.5.1-15018445.exe</a></p><p>VMware Workstation Pro 15.5.0 Build 14665864<br><a href="https://download3.vmware.com/software/wkst/file/VMware-workstation-full-15.5.0-14665864.exe">https://download3.vmware.com/software/wkst/file/VMware-workstation-full-15.5.0-14665864.exe</a></p><p>VMware Workstation Pro 15.1.0 Build 13591040<br><a href="https://download3.vmware.com/software/wkst/file/VMware-workstation-full-15.1.0-13591040.exe">https://download3.vmware.com/software/wkst/file/VMware-workstation-full-15.1.0-13591040.exe</a></p><p>VMware Workstation Pro 14.1.3 Build 9474260<br><a href="https://download3.vmware.com/software/wkst/file/VMware-workstation-full-14.1.3-9474260.exe">https://download3.vmware.com/software/wkst/file/VMware-workstation-full-14.1.3-9474260.exe</a></p><p>VMware Workstation Pro 12.5.9 Build 7535481<br><a href="https://download3.vmware.com/software/wkst/file/VMware-workstation-full-12.5.9-7535481.exe">https://download3.vmware.com/software/wkst/file/VMware-workstation-full-12.5.9-7535481.exe</a></p><p>VMware Workstation 10.0.7 Build 2844087<br><a href="https://download3.vmware.com/software/wkst/file/VMware-workstation-full-10.0.7-2844087.exe">https://download3.vmware.com/software/wkst/file/VMware-workstation-full-10.0.7-2844087.exe</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 免费资源 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> VMware </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>W 校验数字签名时出错。此仓库未被更新，所以仍然使用此前的索引文件。GPG 错误：httpmirrors.ustc.edu.cnkali kali-rolling</title>
+      <link href="/2023/02/26/W%20%E6%A0%A1%E9%AA%8C%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E6%97%B6%E5%87%BA%E9%94%99%E3%80%82%E6%AD%A4%E4%BB%93%E5%BA%93%E6%9C%AA%E8%A2%AB%E6%9B%B4%E6%96%B0%EF%BC%8C%E6%89%80%E4%BB%A5%E4%BB%8D%E7%84%B6%E4%BD%BF%E7%94%A8%E6%AD%A4%E5%89%8D%E7%9A%84%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E3%80%82GPG%20%E9%94%99%E8%AF%AF%EF%BC%9Ahttpmirrors.ustc.edu.cnkali%20kali-rolling/"/>
+      <url>/2023/02/26/W%20%E6%A0%A1%E9%AA%8C%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E6%97%B6%E5%87%BA%E9%94%99%E3%80%82%E6%AD%A4%E4%BB%93%E5%BA%93%E6%9C%AA%E8%A2%AB%E6%9B%B4%E6%96%B0%EF%BC%8C%E6%89%80%E4%BB%A5%E4%BB%8D%E7%84%B6%E4%BD%BF%E7%94%A8%E6%AD%A4%E5%89%8D%E7%9A%84%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6%E3%80%82GPG%20%E9%94%99%E8%AF%AF%EF%BC%9Ahttpmirrors.ustc.edu.cnkali%20kali-rolling/</url>
+      
+        <content type="html"><![CDATA[<p>报错如下</p><pre><code>┌──(root💀kali)-[~]└─# sudo apt-get update                                                                                                                                                     2 ⚙获取:1 http://kali.download/kali kali-rolling InRelease [41.2 kB]错误:1 http://kali.download/kali kali-rolling InRelease  下列签名无效： EXPKEYSIG ED444FF07D8D0BF6 Kali Linux Repository &lt;devel@kali.org&gt;已下载 41.2 kB，耗时 3秒 (15.7 kB/s)正在读取软件包列表... 完成W: 校验数字签名时出错。此仓库未被更新，所以仍然使用此前的索引文件。GPG 错误：http://kali.download/kali kali-rolling InRelease: 下列签名无效： EXPKEYSIG ED444FF07D8D0BF6 Kali Linux Repository &lt;devel@kali.org&gt;W: 无法下载 http://http.kali.org/kali/dists/kali-rolling/InRelease  下列签名无效： EXPKEYSIG ED444FF07D8D0BF6 Kali Linux Repository &lt;devel@kali.org&gt;W: 部分索引文件下载失败。如果忽略它们，那将转而使用旧的索引文件。                                                                                                                                                                                ┌──(root💀kali)-[~]└─# wget archive.kali.org/archive-key.asc                                                                                                                                   2 ⚙--2023-02-26 06:31:16--  http://archive.kali.org/archive-key.asc正在解析主机 archive.kali.org (archive.kali.org)... 192.99.45.140正在连接 archive.kali.org (archive.kali.org)|192.99.45.140|:80... 已连接。已发出 HTTP 请求，正在等待回应... 200 OK长度：3155 (3.1K) [application/octet-stream]正在保存至: “archive-key.asc”archive-key.asc            100%[===============================&gt;]   3.08K  1.46KB/s  用时 2.1s    2023-02-26 06:31:20 (1.46 KB/s) - 已保存 “archive-key.asc” [3155/3155])</code></pre><p>​<br>​    ┌──(root💀kali)-[<del>]<br>​    └─# apt-key add archive-key.asc                                                                                                                                             2 ⚙<br>​    Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8)).<br>​    OK<br>​<br>​    ┌──(root💀kali)-[</del>]<br>​    └─# sudo apt-get update                                                                                                                                                     2 ⚙<br>​    获取:1 <a href="http://kali.download/kali">http://kali.download/kali</a> kali-rolling InRelease [41.2 kB]<br>​    获取:2 <a href="http://kali.download/kali">http://kali.download/kali</a> kali-rolling&#x2F;main amd64 Packages [19.5 MB]<br>​    获取:3 <a href="http://kali.download/kali">http://kali.download/kali</a> kali-rolling&#x2F;main amd64 Contents (deb) [45.4 MB]<br>​    获取:4 <a href="http://kali.download/kali">http://kali.download/kali</a> kali-rolling&#x2F;contrib amd64 Packages [116 kB]<br>​    获取:5 <a href="http://kali.download/kali">http://kali.download/kali</a> kali-rolling&#x2F;contrib amd64 Contents (deb) [172 kB]<br>​    获取:6 <a href="http://kali.download/kali">http://kali.download/kali</a> kali-rolling&#x2F;non-free amd64 Packages [222 kB]<br>​    获取:7 <a href="http://kali.download/kali">http://kali.download/kali</a> kali-rolling&#x2F;non-free amd64 Contents (deb) [931 kB]<br>​    已下载 66.3 MB，耗时 49秒 (1,360 kB&#x2F;s)<br>​    正在读取软件包列表… 完成</p><p>解决方法如下</p><pre><code>wget archive.kali.org/archive-key.asc   //下载签名apt-key add archive-key.asc   //安装签名</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 遇到的问题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Kali </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>青龙面板使用selenium遇到的问题 chromedriver</title>
+      <link href="/2023/02/18/%E9%9D%92%E9%BE%99%E9%9D%A2%E6%9D%BF%E4%BD%BF%E7%94%A8selenium%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%20chromedriver/"/>
+      <url>/2023/02/18/%E9%9D%92%E9%BE%99%E9%9D%A2%E6%9D%BF%E4%BD%BF%E7%94%A8selenium%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%20chromedriver/</url>
+      
+        <content type="html"><![CDATA[<p>青龙里的linux系统是轻量级的Alpine Linux 镜像，所以安装命令不是yum也不是apt，而是apk</p><p>1.先安装selenium依赖</p><p>这里不再做介绍，自行百度</p><p>2.进入青龙 docker 容器</p><pre><code>docker exec -it &#39;容器名称&#39; bash#或docker exec -it &#39;容器ID&#39; bash</code></pre><p>3.安装chromium</p><pre><code>apk add chromium</code></pre><p>4.安装chromedriver</p><pre><code>apk add chromium-chromedriver</code></pre><p>5.使用以下代码测试</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver </span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.chrome.options <span class="keyword">import</span> Options</span><br><span class="line">options = Options()</span><br><span class="line">options.add_argument(<span class="string">&#x27;--headless&#x27;</span>)</span><br><span class="line">options.add_argument(<span class="string">&#x27;--no-sandbox&#x27;</span>)</span><br><span class="line">options.add_argument(<span class="string">&#x27;--disable-dev-shm-usage&#x27;</span>)</span><br><span class="line">options.add_argument(<span class="string">&quot;--disable-blink-features=AutomationControlled&quot;</span>)</span><br><span class="line">options.add_experimental_option(<span class="string">&quot;excludeSwitches&quot;</span>, [<span class="string">&quot;enable-automation&quot;</span>])</span><br><span class="line">options.add_argument(<span class="string">&#x27;--ignore-certificate-errors&#x27;</span>)</span><br><span class="line">options.add_experimental_option(<span class="string">&quot;excludeSwitches&quot;</span>, [<span class="string">&quot;enable-logging&quot;</span>])</span><br><span class="line">options.add_experimental_option(<span class="string">&#x27;useAutomationExtension&#x27;</span>, <span class="literal">False</span>)</span><br><span class="line">browser = webdriver.Chrome(options=options)</span><br><span class="line">browser.get(<span class="string">&#x27;https://www.baidu.com&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(browser.title) </span><br><span class="line">browser.quit()</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 遇到的问题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 青龙面板 </tag>
+            
+            <tag> Python </tag>
+            
+            <tag> chromedriver </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
   
   
 </search>
