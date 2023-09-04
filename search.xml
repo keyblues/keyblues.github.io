@@ -4,6 +4,69 @@
   
     
     <entry>
+      <title>[NISACTF 2022]bilala的二维码</title>
+      <link href="/2023/09/04/%5BNISACTF%202022%5Dbilala%E7%9A%84%E4%BA%8C%E7%BB%B4%E7%A0%81/"/>
+      <url>/2023/09/04/%5BNISACTF%202022%5Dbilala%E7%9A%84%E4%BA%8C%E7%BB%B4%E7%A0%81/</url>
+      
+        <content type="html"><![CDATA[<p>binwalk分离，无果</p><p>010查看无果</p><p>只能补全二维码了</p><p><img src="https://imag.keyblue.cn/imag/202309041707302.png" alt="bilala1QRcode"></p><p>使用画图工具补全三个定位角</p><p><img src="https://imag.keyblue.cn/imag/202309041708988.png" alt="image-20230904170841950"></p><p>再使用QRResearch工具扫描二维码</p><p><img src="https://imag.keyblue.cn/imag/202309041709479.png" alt="image-20230904170921451"></p><p>访问解码出来的链接，下载网页中的图片。</p><p>foremost分离出来一个压缩包<img src="https://imag.keyblue.cn/imag/202309041714621.png" alt="image-20230904171439602"></p><p>拉到windows下，需要密码才能解开</p><p>用ARCHPR爆破</p><p><img src="https://imag.keyblue.cn/imag/202309041941238.png" alt="image-20230904194142210"></p><p>压缩包密码<code>NiSA</code></p><p><img src="https://imag.keyblue.cn/imag/202309041946508.png" alt="image-20230904194632489"></p><p>用Audacity打开mp3文件，是音频隐写</p><p><img src="https://imag.keyblue.cn/imag/202309041946815.png" alt="image-20230904194650780"></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.--. .- .-. - .---- ---... -- ----- .-. ... ...-- ....- -. -..</span><br></pre></td></tr></table></figure><p>解码得到</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PART1:M0RS34ND</span><br></pre></td></tr></table></figure><p>这是flag的前半段，这里还要加上一个图片的分辨率</p><p>是通过foremost分离出来的另外一张图片</p><p><img src="https://imag.keyblue.cn/imag/202309042003974.png" alt="image-20230904200352949"></p><p><img src="https://imag.keyblue.cn/imag/202309042004577.png" alt="image-20230904200422559"></p><p>这另外半段可真是****</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSSCTF&#123;M0RS34ND282X231&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> WriteUp </category>
+          
+          <category> Misc </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[羊城杯 2021]Baby_Forenisc</title>
+      <link href="/2023/09/04/%5B%E7%BE%8A%E5%9F%8E%E6%9D%AF%202021%5DBaby_Forenisc/"/>
+      <url>/2023/09/04/%5B%E7%BE%8A%E5%9F%8E%E6%9D%AF%202021%5DBaby_Forenisc/</url>
+      
+        <content type="html"><![CDATA[<p>查看历史命令</p><p><img src="https://imag.keyblue.cn/imag/202309041542425.png" alt="image-20230904154233373"></p><p>由历史命令可知，flag和git有关</p><p>查看ie</p><p><img src="https://imag.keyblue.cn/imag/202309041455659.png" alt="image-20230904145506659"></p><p> 查找ssh.txt文件</p><p><img src="https://imag.keyblue.cn/imag/202309041502213.png" alt="image-20230904150218179"></p><p>保存文件</p><p><img src="https://imag.keyblue.cn/imag/202309041505277.png" alt="image-20230904150504247"></p><p>base64解码保存的文件</p><p><img src="https://imag.keyblue.cn/imag/202309041510800.png" alt="image-20230904151044768"></p><p>发现了一个QQ邮箱</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">song552085107@qq.com</span><br></pre></td></tr></table></figure><p>用github搜索用户</p><p><img src="https://imag.keyblue.cn/imag/202309041604232.png" alt="image-20230904160428206"></p><p>在这个人的仓库里找到<code>__APP__</code>下载查看</p><p>用010打开文件，选择text模式</p><p><img src="https://imag.keyblue.cn/imag/202309041603994.png" alt="image-20230904160316948"></p><p>在2169行找到了一行base64编码，解码得到flag</p><p><img src="https://imag.keyblue.cn/imag/202309041606307.png" alt="image-20230904160642272"></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SangFor&#123;S0_3azy_2_crack_noob_player&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> WriteUp </category>
+          
+          <category> Misc </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[GDOUCTF 2023]pixelart</title>
+      <link href="/2023/09/04/%5BGDOUCTF%202023%5Dpixelart/"/>
+      <url>/2023/09/04/%5BGDOUCTF%202023%5Dpixelart/</url>
+      
+        <content type="html"><![CDATA[<p>打开压缩包，是一张图片，图片有点大。。。</p><p><img src="https://imag.keyblue.cn/imag/202309041327813.png" alt="arcaea"></p><p>用010打开图片，有隐藏的信息<code>320x180</code></p><p><img src="https://imag.keyblue.cn/imag/202309041332426.png" alt="image-20230904133237393"></p><p>放大图片仔细看，可以看到flag被使用白点写在图片上</p><p><img src="https://imag.keyblue.cn/imag/202309041335333.png" alt="image-20230904133506226"></p><p>放大图片记录，原来这是假的flag</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;fake_flag&#125;</span><br></pre></td></tr></table></figure><p>发现图片上还有其他的像素点，原图大小<code>3840x2160</code>，根据之前给出的线索<code>320x180</code>我们可以知道每一个像素点之间的距离为12</p><p>这里需要用到python脚本来实现把图片像素化</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">original_image = Image.<span class="built_in">open</span>(<span class="string">&#x27;res/arcaea.png&#x27;</span>)</span><br><span class="line"></span><br><span class="line">new_width = original_image.width // <span class="number">12</span></span><br><span class="line">new_height = original_image.height // <span class="number">12</span></span><br><span class="line"></span><br><span class="line">new_image = Image.new(<span class="string">&quot;RGB&quot;</span>,(new_width,new_height))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(new_width):</span><br><span class="line">    <span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(new_height):</span><br><span class="line">        pixel = original_image.getpixel((x *<span class="number">12</span>,y*<span class="number">12</span>))</span><br><span class="line">        new_image.putpixel((x,y),pixel)</span><br><span class="line"></span><br><span class="line">new_image.save(<span class="string">&quot;flag.png&quot;</span>)</span><br></pre></td></tr></table></figure><p><img src="https://imag.keyblue.cn/imag/202309041428100.png" alt="flag"></p><p>然后可以使用zsteg查看图片隐写</p><p><img src="https://imag.keyblue.cn/imag/202309041431243.png" alt="image-20230904143120214"></p><p>也可以使用stegsolve查看</p><p><img src="https://imag.keyblue.cn/imag/202309041432780.png" alt="image-20230904143206750"></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;J3st_2_cats_battling&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> WriteUp </category>
+          
+          <category> Misc </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[NISACTF 2022]流量包里有个熊</title>
       <link href="/2023/09/02/%5BNISACTF%202022%5D%E6%B5%81%E9%87%8F%E5%8C%85%E9%87%8C%E6%9C%89%E4%B8%AA%E7%86%8A/"/>
       <url>/2023/09/02/%5BNISACTF%202022%5D%E6%B5%81%E9%87%8F%E5%8C%85%E9%87%8C%E6%9C%89%E4%B8%AA%E7%86%8A/</url>
