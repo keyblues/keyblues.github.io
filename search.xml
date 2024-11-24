@@ -4,6 +4,52 @@
   
     
     <entry>
+      <title>X99台式与华为手机无线多屏协同</title>
+      <link href="/2024/11/24/X99%E5%8F%B0%E5%BC%8F%E4%B8%8E%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%9C%BA%E6%97%A0%E7%BA%BF%E5%A4%9A%E5%B1%8F%E5%8D%8F%E5%90%8C/"/>
+      <url>/2024/11/24/X99%E5%8F%B0%E5%BC%8F%E4%B8%8E%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%9C%BA%E6%97%A0%E7%BA%BF%E5%A4%9A%E5%B1%8F%E5%8D%8F%E5%90%8C/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><strong>这里只讲无线协同，有线协同什么版本都可以</strong></p><p>台式配置：E5-2666v3、x99、win10 ltsc、杂牌usb无线网卡、毕亚兹蓝牙5.1、ntag213抗金属nfc贴纸</p><p>手机：Mate 60 Pro、鸿蒙4.2</p><p>所有工具：<a href="https://pan.baidu.com/s/1QXPDaXXYznbcHlITnMIgVw?pwd=6666">百度网盘分享链接</a></p><p>标签制作与擦除工具：<a href="https://github.com/Masterchiefm/Thirdparty-huawei-Share-OneHop">https://github.com/Masterchiefm/Thirdparty-huawei-Share-OneHop</a></p><p>安装工具与安装包是B站up主<a href="https://space.bilibili.com/98799169">空降猫咪</a>发布的，请支持原作者</p><p>很多问题都是在这里看到并解决的：<a href="https://www.52pojie.cn/thread-1833341-1-1.html">https://www.52pojie.cn/thread-1833341-1-1.html</a></p><h1 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a>安装配置</h1><p>我这里经过测试12.0.1.26可以正常无线协同，其他版本待测试</p><p><img src="https://imag.keyblue.cn/image/202411240017029.png" alt="image"></p><p>安装之前请执行脚本<code>安装前点我.bat</code>，安装过程看空降猫咪的视频即可–&gt;<a href="https://www.bilibili.com/video/BV1Z5411d73y">传送门</a></p><p>硬件信息：</p><p><img src="https://imag.keyblue.cn/image/202411240017014.png" alt="image"></p><p>协同成功：</p><p><img src="https://imag.keyblue.cn/image/202411240017746.png" alt="image"></p><h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="蓝屏"><a href="#蓝屏" class="headerlink" title="蓝屏"></a>蓝屏</h2><p><strong>安装的时候蓝屏</strong>，是因为三个HwOs2Ec10x64开头的驱动文件导致的，在上面的吾爱破解论坛里有讲</p><p>只要在安装的时候删除这三个文件就行了，但人的手速达不到（至少我达不到），来实时检测文件并删除，百度网盘里有</p><p>注意脚本<code>安装前点我.bat</code>需要在安装开始之前使用具有<strong>管理员权限执行</strong></p><blockquote><p>如果在安装时未及时删除文件，在安装尾声时电脑会蓝屏，再重启后登录桌面依旧蓝屏的，需要再登录界面按住shift点击重启，然后以安全模式启动后删除<code>C:\Program Files\Huawei</code>下的所有文件，然后重启系统重新安装</p></blockquote><h2 id="安全认证失败"><a href="#安全认证失败" class="headerlink" title="安全认证失败"></a>安全认证失败</h2><ol><li><p>重新登录华为账号，多种登录方式多试几次</p></li><li><p>尝试扫码连接</p></li></ol><p><img src="https://imag.keyblue.cn/image/202411240017617.png" alt="image"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 多屏协同 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>ESP32-C3 MicroPython-固件烧录</title>
+      <link href="/2024/11/24/ESP32-C3%20MicroPython-%E5%9B%BA%E4%BB%B6%E7%83%A7%E5%BD%95/"/>
+      <url>/2024/11/24/ESP32-C3%20MicroPython-%E5%9B%BA%E4%BB%B6%E7%83%A7%E5%BD%95/</url>
+      
+        <content type="html"><![CDATA[<h1 id="0x01-前言"><a href="#0x01-前言" class="headerlink" title="0x01 前言"></a>0x01 前言</h1><p>CORE ESP32核心板是基于乐鑫ESP32-C3进行设计的一款核心板，尺寸仅有21mm*51mm，板边采用邮票孔设计，方便开发者在不同场景下的使用。核心板支持UART、GPIO、SPI、I2C、ADC、PWM等接口，可根据实际需要选择。<br>MicroPython是为了在嵌入式系统中运行Python 3编程语言而设计的轻量级版本解释器。与常规Python相比，MicroPython解释器体积小(仅100KB左右)，通过编译成二进制Executable文件运行，执行效率较高。它使用了轻量级的垃圾回收机制并移除了大部分Python标准库，以适应资源限制的微控制器。</p><p>ESP32C3的原理图以及其他资料都在以下链接</p><blockquote><p>参考链接：<a href="https://wiki.luatos.com/chips/esp32c3/index.html">https://wiki.luatos.com/chips/esp32c3/index.html</a></p></blockquote><p>为什么要用MicroPython来玩开发板？因为菜不会C，只会python</p><h1 id="0x02-环境准备"><a href="#0x02-环境准备" class="headerlink" title="0x02 环境准备"></a>0x02 环境准备</h1><h2 id="下载ESP32-Micropython-固件"><a href="#下载ESP32-Micropython-固件" class="headerlink" title="下载ESP32 Micropython 固件"></a>下载ESP32 Micropython 固件</h2><p>固件官网：<a href="https://micropython.org/download/ESP32_GENERIC_C3/">https://micropython.org/download/ESP32_GENERIC_C3/</a></p><p><img src="https://imag.keyblue.cn/image/202405072120911.png" alt="image.png"><br>博主这里用的是1.23.0的预览版，直接下载.bin文件即可</p><h2 id="下载esptool"><a href="#下载esptool" class="headerlink" title="下载esptool"></a>下载esptool</h2><p>项目地址：<a href="https://github.com/espressif/esptool/releases/tag/v4.7.0">https://github.com/espressif/esptool/releases/tag/v4.7.0</a><br><img src="https://imag.keyblue.cn/image/202405072124103.png" alt="image.png"><br>下载合适自己的版本即可，这里因为电脑是win10，所以下载win64版本</p><h2 id="找到COM口"><a href="#找到COM口" class="headerlink" title="找到COM口"></a>找到COM口</h2><p>将esp32-c3连接到pc，在windows设备管理器找到刚刚接入的设备是哪个COM口<br>我这里是COM3口</p><h1 id="0x03烧录"><a href="#0x03烧录" class="headerlink" title="0x03烧录"></a>0x03烧录</h1><p>将解压出来的esptool.exe和刚刚下载的固件放在同一目录下<br>在当前目录打开cmd，输入命令擦除flash，注意是自己设备的COM口</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">esptool.exe <span class="token parameter variable">--chip</span> esp32c3 <span class="token parameter variable">--port</span> COM3 erase_flash<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>擦除成功后再写入固件</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">esptool.exe <span class="token parameter variable">--chip</span> esp32c3 <span class="token parameter variable">--port</span> COM3 <span class="token parameter variable">--baud</span> <span class="token number">460800</span> write_flash <span class="token parameter variable">-z</span> 0x0 ESP32_GENERIC_C3-20240506-v1.23.0-preview.352.g50b43fec1.bin<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>至此烧录完成</p><h1 id="0x04-配置开发环境"><a href="#0x04-配置开发环境" class="headerlink" title="0x04 配置开发环境"></a>0x04 配置开发环境</h1><p>烧录完成后，先拔掉接口再插入</p><p>打开xshell配置SERIAL连接<br><img src="https://imag.keyblue.cn/image/202405072136499.png" alt="image.png"><br>再选择串口COM3，波特率115200<br><img src="https://imag.keyblue.cn/image/202405072137330.png" alt="image.png"><br>直接连接即可<br>有时候连接不上可能是在执行脚本，不用管直接Ctrl+C退出即可</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 开发板 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ESP32-C3 </tag>
+            
+            <tag> MicroPython </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>常见图片宽高修改</title>
       <link href="/2023/10/21/%E5%B8%B8%E8%A7%81%E5%9B%BE%E7%89%87%E5%AE%BD%E9%AB%98%E4%BF%AE%E6%94%B9/"/>
       <url>/2023/10/21/%E5%B8%B8%E8%A7%81%E5%9B%BE%E7%89%87%E5%AE%BD%E9%AB%98%E4%BF%AE%E6%94%B9/</url>
