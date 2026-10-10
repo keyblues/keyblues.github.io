@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KeyBlue</title>
+</head>
+<body>
+  <p>正在跳转到 / Redirecting to <a id="redirect" href="https://www.keyblue.cn/">https://www.keyblue.cn/</a></p>
+  <script>
+    (function () {
+      var target = "https://www.keyblue.cn" + location.pathname + location.search + location.hash;
+      var link = document.getElementById("redirect");
+      link.href = target;
+      link.textContent = target;
+      location.replace(target);
+    })();
+  </script>
+</body>
+</html>
